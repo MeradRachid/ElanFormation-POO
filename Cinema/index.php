@@ -43,7 +43,7 @@
          * (Voir images/pj dans le dossier Cinema)
          */
 
-        switch ($variable) 
+        switch ($_GET['action']) 
         {
             case "listFilms" : $ctrlCinema->listFilms();
                 # code...
