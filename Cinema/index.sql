@@ -51,6 +51,14 @@ JOIN movie_character mc2 ON mc.character_id = mc2.character_id
 WHERE mc.movie_id = [film_id];
 -- Remplacez <film_id> par l'ID du film souhaité.
 
+-- f°²) Pour ne pas avoir à indiquer d'ID : 
+SELECT DISTINCT p.firstName, p.lastName, p.gender, mc2.character_name, m.movie_title
+FROM person p
+JOIN actor a ON p.person_id = a.person_id
+JOIN movie_cast mc ON a.actor_id = mc.actor_id
+JOIN movie_character mc2 ON mc.character_id = mc2.character_id
+JOIN movie m ON mc.movie_id = m.movie_id;
+
 -- g) Films tournés par un acteur(actor_id) avec le rôle et l'année de sortie (récent vers ancien).
 SELECT mc2.character_name, p.firstName, p.lastName, DATE_FORMAT(m.release_date, '%Y-%M-%D') as release_date
 FROM movie_cast mc

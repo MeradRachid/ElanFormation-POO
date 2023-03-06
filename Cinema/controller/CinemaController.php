@@ -20,6 +20,21 @@
                                   ');
             require "view/listFilms.php";
         }
+
+        public function listActors()
+        {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query('
+                                    SELECT mc2.character_name, p.lastName, p.firstName, p.gender
+                                    FROM person p
+                                    JOIN actor a ON p.person_id = a.person_id
+                                    JOIN movie_cast mc ON a.actor_id = mc.actor_id
+                                    JOIN movie_character mc2 ON mc.character_id = mc2.character_id
+                                    JOIN movie m ON mc.movie_id = m.movie_id
+                                    GROUP BY mc2.character_name, p.lastName, p.firstName, p.gender
+                                  ');
+            require "view/listActors.php";
+        }
     }
 
 ?>

@@ -49,7 +49,7 @@
                 # code...
             break;
             
-            case "listActeurs" : $ctrlCinema->listActeurs();
+            case "listActors" : $ctrlCinema->listActors();
                 # code...
             break;
         }
