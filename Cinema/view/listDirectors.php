@@ -1,7 +1,7 @@
 
 <?php ob_start(); ?>
 
-<p class="badge text-bg-info m-1 fs-5"> There are <?= $requete->rowCount() ?> actors. </p>
+<p class="badge text-bg-info m-1 fs-5"> There are <?= $requete->rowCount() ?> directors. </p>
 
 <table class="table table-striped-columns table-sm table-hover"> 
     <thead>
@@ -29,8 +29,8 @@
 
 <?php
 
-$titre = "Liste des Acteurs"; 
-$titre_secondaire = "Liste des acteurs";
+$titre = "Liste des Réalisateurs"; 
+$titre_secondaire = "Liste des réalisateurs";
     $contenu = ob_get_clean();
     require "view/template.php";        
 ?>

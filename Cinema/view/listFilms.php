@@ -1,23 +1,27 @@
 
         <?php ob_start(); ?>
 
-        <p class="uk-label uk-label-warning"> Il y a <?= $requete->rowCount() ?> films. </p>
+        <p class="badge text-bg-info m-1 fs-5"> There are <?= $requete->rowCount() ?> films. </p>
 
-        <table class="uk-table uk-table-striped"> 
+        <table class="table table-striped-columns table-sm table-hover"> 
             <thead>
                 <tr>
-                    <th> TITRE </th>
-                    <th> PARUTION </th>
+                    <th> # </th>
+                    <th> MOVIE TITLE </th>
+                    <th> RELEASED ON </th>
+                    <th> DURATION </th>
                 </tr>
 
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
                 <?php
-                    foreach($requete->fetchAll() as $film)
+                    foreach($requete->fetchAll() as $id => $film)
                     { ?>
                         <tr>
+                            <td> <?= $id ?> </td>
                             <td> <?= $film["movie_title"] ?> </td>
                             <td> <?= $film["release_date"] ?> </td>
+                            <td> <?= $film["duration"] ?> </td>
                         </tr>
               <?php } ?>
             </tbody>
@@ -25,7 +29,7 @@
 
         <?php
 
-        $titre = "Liste des films"; 
+        $titre = "Liste des Films"; 
         $titre_secondaire = "Liste des films";
             $contenu = ob_get_clean();
             require "view/template.php";        

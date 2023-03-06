@@ -25,7 +25,23 @@
         {
             $pdo = Connect::seConnecter();
             $requete = $pdo->query('
-                                    SELECT mc2.character_name, p.lastName, p.firstName, p.gender
+                                    SELECT p.lastName, p.firstName, p.gender
+                                    FROM person p
+                                    JOIN actor a ON p.person_id = a.person_id
+                                    JOIN movie_cast mc ON a.actor_id = mc.actor_id
+                                    JOIN movie_character mc2 ON mc.character_id = mc2.character_id
+                                    JOIN movie m ON mc.movie_id = m.movie_id
+                                    GROUP BY p.lastName, p.firstName, p.gender
+                                    ORDER BY p.lastName DESC
+                                  ');
+            require "view/listActors.php";
+        }
+        
+        public function listCharacters()
+        {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query('
+                                    SELECT p.lastName, p.firstName, p.gender, mc2.character_name
                                     FROM person p
                                     JOIN actor a ON p.person_id = a.person_id
                                     JOIN movie_cast mc ON a.actor_id = mc.actor_id
@@ -33,7 +49,29 @@
                                     JOIN movie m ON mc.movie_id = m.movie_id
                                     GROUP BY mc2.character_name, p.lastName, p.firstName, p.gender
                                   ');
-            require "view/listActors.php";
+            require "view/listCharacters.php";
+        }
+        
+        public function listDirectors()
+        {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query('
+                                    SELECT DISTINCT p.firstName, p.lastName, p.gender
+                                    FROM person p
+                                    INNER JOIN director d ON p.person_id = d.person_id
+                                    INNER JOIN actor a ON p.person_id = a.person_id;
+                                  ');
+            require "view/listDirectors.php";
+        }
+        
+        public function listGenres()
+        {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query('
+                                    SELECT g.genre_name
+                                    FROM genre g                                    
+                                  ');
+            require "view/listGenres.php";
         }
     }
 

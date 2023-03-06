@@ -52,6 +52,18 @@
             case "listActors" : $ctrlCinema->listActors();
                 # code...
             break;
+
+            case "listCharacters" : $ctrlCinema->listCharacters();
+                # code...
+            break;
+
+            case "listDirectors" : $ctrlCinema->listDirectors();
+                # code...
+            break;
+
+            case "listGenres" : $ctrlCinema->listGenres();
+                # code...
+            break;
         }
     }
 

@@ -220,7 +220,7 @@ INSERT INTO movie_character (character_id, character_name) VALUES
 (16, 'Faramir'),
 (17, 'Denethor'),
 (18, 'Gollum'),
-(19, 'Bilbo Baggins'),
+(19, 'Old Bilbo Baggins'),
 (20, 'Thorin Oakenshield'),
 (21, 'Balin'),
 (22, 'Dwalin'),
@@ -239,7 +239,8 @@ INSERT INTO movie_character (character_id, character_name) VALUES
 (35, 'Bowman'),
 (36, 'Beorn'),
 (37, 'Smaug The Dragon'),
-(38, 'Cameo');
+(38, 'Cameo'),
+(39, 'Young Bilbo Baggins');
 
 -- >> insertion Personnes : 
 INSERT INTO person (person_id, firstName, lastName, birth_date, gender) VALUES
@@ -399,9 +400,9 @@ VALUES
 (3, 39, 38),
 (1, 19, 19),
 (3, 19, 19),
-(4, 20, 19),
-(5, 20, 19),
-(6, 20, 19),
+(4, 20, 39),
+(5, 20, 39),
+(6, 20, 39),
 (6, 19, 19),
 (4, 21, 20),
 (5, 21, 20),
