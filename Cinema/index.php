@@ -22,9 +22,6 @@
         /**
          * N'oublions pas de faire passer l'id en paramètre pour afficher les détails d'un film : 
          * 
-         * $id = (isset($_GET["id"])) ? $_GET["id"] : null;
-         *   // $type = (isset($_GET["type"])) ? $_GET["type"] : null;
-         * 
          * if(isset($_GET["action"]))
          *  {
          *      switch ($_GET["action"])
@@ -43,48 +40,45 @@
          * (Voir images/pj dans le dossier Cinema)
          */
 
+            // $type = (isset($_GET["type"])) ? $_GET["type"] : null;
+        $id = (isset($_GET["id"])) ? $_GET["id"] : null;
+
         switch ($_GET['action']) 
         {
             case "listFilms" : $ctrlCinema->listFilms();
+                # code...
+            break;
+            case "detailFilm" : $ctrlCinema->detailFilm($id);
                 # code...
             break;
             
             case "listActors" : $ctrlCinema->listActors();
                 # code...
             break;
+            case "detailActor" : $ctrlCinema->detailActor($id);
+                # code...
+            break;
 
             case "listCharacters" : $ctrlCinema->listCharacters();
+                # code...
+            break;
+            case "detailCharacter" : $ctrlCinema->detailCharacter($id);
                 # code...
             break;
 
             case "listDirectors" : $ctrlCinema->listDirectors();
                 # code...
             break;
+            case "detailDirector" : $ctrlCinema->detailDirector($id);
+                # code...
+            break;
 
             case "listGenres" : $ctrlCinema->listGenres();
                 # code...
             break;
-
-            case "detailGenre" : $ctrlCinema->detailGenre();
+            case "detailGenre" : $ctrlCinema->detailGenre($id);
                 # code...
             break;
-
-            case "detailFilm" : $ctrlCinema->detailFilm();
-                # code...
-            break;
-
-            case "detailCharacter" : $ctrlCinema->detailCharacter();
-                # code...
-            break;
-
-            case "detailActor" : $ctrlCinema->detailActor();
-                # code...
-            break;
-
-            case "detailDirector" : $ctrlCinema->detailDirector();
-                # code...
-            break;
-
         }
     }
 

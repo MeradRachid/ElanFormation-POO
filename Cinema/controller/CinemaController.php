@@ -74,18 +74,32 @@
             require "view/listGenres.php";
         }
 
-        public function detailFilm()
+        public function detailFilm($id)
         {
             $pdo = Connect::seConnecter();
-            $requete = $pdo->query('
-                                    SELECT movie_title, DATE_FORMAT(release_date, "%Y-%M-%D") AS release_date, synopsis, duration 
-                                    FROM movie
-                                    WHERE movie_id = "1";
-                                  ');
-
-            $requete2 = $pdo->query('
-                                    SELECT * FROM person ORDER BY person_id LIMIT 3;
+            $requete = $pdo->prepare('
+                                      SELECT movie_title, DATE_FORMAT(release_date, "%Y-%M-%D") AS release_date, synopsis, duration 
+                                      FROM movie
+                                      WHERE movie_id = :id;
                                    ');
+            $requete->execute(["id" => $id]);
+
+            $requete2 = $pdo->prepare('
+                                       SELECT * FROM person 
+                                       WHERE person_id = :id
+                                       ORDER BY person_id LIMIT 4;
+                                    ');
+            $requete2->execute(["id" => $id]);
+
+            $requete3 = $pdo->prepare('
+                                    SELECT DISTINCT p.firstName, p.lastName, p.gender
+                                    FROM person p
+                                    INNER JOIN director d ON p.person_id = d.person_id
+                                    INNER JOIN actor a ON p.person_id = a.person_id
+                                    WHERE p.person_id = :id;
+                                   ');
+            $requete3->execute(["id" => $id]);
+
             require "view/detailFilm.php";
         }
     }

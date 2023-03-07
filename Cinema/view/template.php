@@ -17,9 +17,7 @@ On exploitera ce qu'on appelle "la temporisation de sortie" en PHP -->
     <body>
         <div id="bodyWrap" class="container">
             <nav class="d-flex align-items-center navbar navbar-expand-lg bg-primary p-1 rounded" data-bs-theme="dark">
-                <a href="#">
-                    <img src="public/img/RaiKoh.png" alt="Logo" width="43" height="43" class="d-inline-block align-text-top rounded">
-                </a>
+                <a href="#"><img src="public/img/RaiKoh.png" alt="Logo" width="43" height="43" class="d-inline-block align-text-top rounded"></a>
                 <a class="navbar-brand ps-3" href="#"><strong> Middle-Earth Cinema </strong></a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
