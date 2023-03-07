@@ -1,13 +1,15 @@
 
 <?php ob_start(); ?>
 
-<p class="badge text-bg-info m-1 fs-5"> There are <?= $requete->rowCount() ?> movie genres. </p>
+<!-- <p class="badge text-bg-info m-1 fs-5"> There are <?= // $requete->rowCount() ?> actors. </p> -->
 
 <table class="table table-striped-columns table-sm table-hover"> 
     <thead>
         <tr>
             <th> # </th>
-            <th> MOVIE GENRE </th>
+            <th> FIRSTNAME </th>
+            <th> LASTNAME </th>
+            <th> GENDER </th>
         </tr>
 
     </thead>
@@ -17,7 +19,9 @@
             { ?>
                 <tr>
                     <td> <?= $id ?> </td>
-                    <td> <?= $film["genre_name"] ?> </td>
+                    <td> <?= $film["firstName"] ?> </td>
+                    <td> <?= $film["lastName"] ?> </td>
+                    <td> <?= $film["gender"] ?> </td>
                 </tr>
       <?php } ?>
     </tbody>
@@ -25,8 +29,8 @@
 
 <?php
 
-$titre = "Liste des Genres"; 
-$titre_secondaire = "Liste des genres";
+$titre = "Liste des Acteurs"; 
+$titre_secondaire = "Liste des acteurs";
     $contenu = ob_get_clean();
     require "view/template.php";        
 ?>

@@ -64,6 +64,27 @@
             case "listGenres" : $ctrlCinema->listGenres();
                 # code...
             break;
+
+            case "detailGenre" : $ctrlCinema->detailGenre();
+                # code...
+            break;
+
+            case "detailFilm" : $ctrlCinema->detailFilm();
+                # code...
+            break;
+
+            case "detailCharacter" : $ctrlCinema->detailCharacter();
+                # code...
+            break;
+
+            case "detailActor" : $ctrlCinema->detailActor();
+                # code...
+            break;
+
+            case "detailDirector" : $ctrlCinema->detailDirector();
+                # code...
+            break;
+
         }
     }
 

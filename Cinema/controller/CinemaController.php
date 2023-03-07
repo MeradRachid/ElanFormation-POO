@@ -73,6 +73,21 @@
                                   ');
             require "view/listGenres.php";
         }
+
+        public function detailFilm()
+        {
+            $pdo = Connect::seConnecter();
+            $requete = $pdo->query('
+                                    SELECT movie_title, DATE_FORMAT(release_date, "%Y-%M-%D") AS release_date, synopsis, duration 
+                                    FROM movie
+                                    WHERE movie_id = "1";
+                                  ');
+
+            $requete2 = $pdo->query('
+                                    SELECT * FROM person ORDER BY person_id LIMIT 3;
+                                   ');
+            require "view/detailFilm.php";
+        }
     }
 
 ?>

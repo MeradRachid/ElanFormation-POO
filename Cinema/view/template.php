@@ -17,54 +17,65 @@ On exploitera ce qu'on appelle "la temporisation de sortie" en PHP -->
     <body>
         <div id="bodyWrap" class="container">
             <nav class="d-flex align-items-center navbar navbar-expand-lg bg-primary p-1 rounded" data-bs-theme="dark">
-                <a href="index.php">
+                <a href="#">
                     <img src="public/img/RaiKoh.png" alt="Logo" width="43" height="43" class="d-inline-block align-text-top rounded">
                 </a>
-                <a class="navbar-brand ps-3" href="index.php"><strong> Middle-Earth Cinema </strong></a>
+                <a class="navbar-brand ps-3" href="#"><strong> Middle-Earth Cinema </strong></a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link active dropdown-toggle" href="index.php?action=listGenres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Genres
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Aventure</a></li>
-                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listGenres">Action</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listGenres">Aventure</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listGenres">Fantasy</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Show All</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listGenres">Show All</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link active dropdown-toggle" href="index.php?action=listFilms" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Films 
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Lord of Rings</a></li>
-                            <li><a class="dropdown-item" href="#">The Hobbit</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listFilms">Lord of Rings</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listFilms">The Hobbit</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Show All</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listFilms">Show All</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link active dropdown-toggle" href="index.php?action=listCharacters" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Characters
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Lord of Rings</a></li>
-                            <li><a class="dropdown-item" href="#">The Hobbit</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listCharacters">Lord of Rings</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listCharacters">The Hobbit</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Show All</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listCharacters">Show All</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link active dropdown-toggle" href="index.php?action=listActors" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actors
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="index.php?action=listActors">Lord of Rings</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listActors">The Hobbit</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.php?action=listActors">Show All</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="index.php?action=listDirectors" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Directors
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Peter Jackson</a></li>
-                            <li><a class="dropdown-item" href="#">Andy Serkis</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listDirectors">Peter Jackson</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listDirectors">Andy Serkis</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Show All</a></li>
+                            <li><a class="dropdown-item" href="index.php?action=listDirectors">Show All</a></li>
                         </ul>
                     </li>
                 </ul>
