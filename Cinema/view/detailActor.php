@@ -1,8 +1,6 @@
 
 <?php ob_start(); ?>
 
-<!-- <p class="badge text-bg-info m-1 fs-5"> There are <?= // $requete->rowCount() ?> actors. </p> -->
-
 <table class="table table-striped-columns table-sm table-hover"> 
     <thead>
         <tr>

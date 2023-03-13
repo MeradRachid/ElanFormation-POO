@@ -1,60 +1,44 @@
 
 <?php ob_start(); ?>
 
-<!-- <p class="badge text-bg-info m-1 fs-5"> There are <?php // $requete->rowCount() ?> films. </p> -->
-
-    <div class="card d-flex flex-row justify-content-evenly">
+    <div class="d-flex flex-row justify-content-evenly">
         <div class="card text-bg-info m-3" style="max-width: 35rem;">
             <div class="card-header"></div>
-            <div class="card-body">
+            <div class="card-body d-flex flex-column align-items-center justify-content-start">
                 <h4 class="card-title">Movie informations</h4>
                 <p class="card-text">
                     <?php
                         foreach($requete->fetchAll() as $id => $film)
+                         { ?>                 
+                                <p> Title : <?= $film["movie_title"] ?> </p>
+                                <p> Released on : <?= $film["release_date"] ?> </p>
+                                <p> Duration : <?= $film["duration"] ?> minutes </p> 
+                                <p> Directed by : <?= $film["identity"] ?> </p> 
+                                <p> <?= $film["poster"] ?> </p>
+                    <?php } ?>
+                </p>
+            </div>
+        </div>
+
+        <div class="card flex-fill text-bg-info m-3" style="max-width: 35rem;">
+            <div class="card-header"> </div>
+            <div class="card-body">
+                <h4 class="card-title text-center">Starring : </h4>
+                <div class="d-flex flex-wrap">
+                    <p class="card-text">
+                        <?php
+                            foreach($requete3->fetchAll() as $id => $film)
                             { ?>
-                            <p> Movie ID : N°<?= $id ?> </p>
-                            <p> Title : <?= $film["movie_title"] ?> </p>
-                            <p> Released on : <?= $film["release_date"] ?> </p>
-                            <p> Duration : <?= $film["duration"] ?> </p>
-                            <a class="text-decoration-none text-reset dropdown-toggle" href="index.php?action=listFilms">Show all movies</a>
-                    <?php } ?>
-                </p>
-            </div>
-        </div>
-        <div class="card flex-fill text-bg-info m-3" style="max-width: 35rem;">
-            <div class="card-header"> </div>
-            <div class="card-body">
-                <h4 class="card-title">Cast informations</h4>
-                <p class="card-text">
-                    <?php
-                        foreach($requete2->fetchAll() as $id => $film)
-                         { ?>
-                            <p> 
-                                Actor ID : N°<?= $id ?> /  Name : <?= $film["firstName"] ?>, <?= $film["lastName"] ?> - Gender : <?= $film["gender"] ?>. 
-                            </p>
-                    <?php } ?>
-                    <a class="text-decoration-none text-reset dropdown-toggle" href="index.php?action=listActors">Show all actors</a>
-                </p>
-            </div>
-        </div>
-        <div class="card flex-fill text-bg-info m-3" style="max-width: 35rem;">
-            <div class="card-header"> </div>
-            <div class="card-body">
-                <h4 class="card-title">Directors informations</h4>
-                <p class="card-text">
-                    <?php
-                        foreach($requete3->fetchAll() as $id => $film)
-                         { ?>
-                            <p> 
-                                <a class="text-decoration-none text-reset"> Director ID : N°<?= $id ?> / <br> Name : <?= $film["firstName"] ?>, <?= $film["lastName"] ?> - Gender : <?= $film["gender"] ?>. </a>
-                            </p>
-                    <?php } ?>
-                    <a class="text-decoration-none text-reset dropdown-toggle" href="index.php?action=listDirectors">Show all directors</a>
-                </p>
+                                <p class="justify-content-center text-center" style="width: 200px"> 
+                                    #<?= $id+1 ?> <?= $film["firstName"] ?>, <?= $film["lastName"] ?> <br> <?= $film["poster"] ?>
+                                </p>
+                        <?php } ?>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-
+        
 <?php
 
 $titre = "Detail du Film"; 

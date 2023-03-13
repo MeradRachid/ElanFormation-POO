@@ -3,6 +3,8 @@
 
 <p class="badge text-bg-info m-1 fs-5"> There are <?= $requete->rowCount() ?> actors. </p>
 
+<button><a href="index.php?action=addActorForm" class="text-decoration-none text-reset">ADD Actor</a></button>
+
 <table class="table table-striped-columns table-sm table-hover"> 
     <thead>
         <tr>
@@ -18,7 +20,7 @@
             foreach($requete->fetchAll() as $id => $film)
             { ?>
                 <tr>
-                    <td> <?= $id ?> </td>
+                    <td> <?= $id+1 ?> </td>
                     <td> <?= $film["firstName"] ?> </td>
                     <td> <?= $film["lastName"] ?> </td>
                     <td> <?= $film["gender"] ?> </td>

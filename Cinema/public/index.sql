@@ -193,12 +193,12 @@ INSERT INTO genre (genre_id, genre_name) VALUES
 
 -- >> insertion Films : 
 INSERT INTO movie (movie_id, movie_title, release_date, duration, synopsis, rating, poster, director_id) VALUES
-(1, 'The Lord of the Rings: The Fellowship of the Ring', '2001-12-19', '178', 'A young hobbit, Frodo, who has found the One Ring that belongs to the Dark Lord Sauron, begins his journey with eight companions to Mount Doom, the only place where it can be destroyed.', 4.8, NULL, 1),
-(2, 'The Lord of the Rings: The Two Towers', '2002-12-18', '179', 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron''s new ally, Saruman, and his hordes of Isengard.', 4.9, NULL, 1),
-(3, 'The Lord of the Rings: The Return of the King', '2003-12-17', '201', 'Gandalf and Aragorn lead the World of Men against Sauron''s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.', 5, NULL, 1),
-(4, 'The Hobbit: An Unexpected Journey', '2012-12-13', '169', 'A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.', 3.7, NULL, 2),
-(5, 'The Hobbit: The Desolation of Smaug', '2013-12-13', '161', 'The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring.', 4.1, NULL, 2),
-(6, 'The Hobbit: The Battle of the Five Armies', '2014-12-17', '144', 'Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.', 4, NULL, 2);
+(1, 'The Lord of the Rings: The Fellowship of the Ring', '2001-12-19', SEC_TO_TIME(178*60), 'A young hobbit, Frodo, who has found the One Ring that belongs to the Dark Lord Sauron, begins his journey with eight companions to Mount Doom, the only place where it can be destroyed.', 4.8, NULL, 1),
+(2, 'The Lord of the Rings: The Two Towers', '2002-12-18', SEC_TO_TIME(179*60), 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron''s new ally, Saruman, and his hordes of Isengard.', 4.9, NULL, 1),
+(3, 'The Lord of the Rings: The Return of the King', '2003-12-17', SEC_TO_TIME(201*60), 'Gandalf and Aragorn lead the World of Men against Sauron''s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.', 5, NULL, 1),
+(4, 'The Hobbit: An Unexpected Journey', '2012-12-13', SEC_TO_TIME(169*60), 'A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.', 3.7, NULL, 2),
+(5, 'The Hobbit: The Desolation of Smaug', '2013-12-13', SEC_TO_TIME(161*60), 'The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring.', 4.1, NULL, 2),
+(6, 'The Hobbit: The Battle of the Five Armies', '2014-12-17', SEC_TO_TIME(144*60), 'Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.', 4, NULL, 2);
 
 -- >> insertion Personnages : 
 INSERT INTO movie_character (character_id, character_name) VALUES
@@ -328,7 +328,7 @@ INSERT INTO Actor (actor_id, person_id) VALUES
 -- etc.
 
 -- >> insertion Realisateur : 
-INSERT INTO director (id_director, person_id) VALUES
+INSERT INTO director (director_id, person_id) VALUES
 (1, 39),
 (2, 18);
 
@@ -387,7 +387,6 @@ VALUES
 (3, 11, 11),
 (3, 12, 12),
 (3, 13, 13),
-(3, 18, 18),
 (2, 14, 14),
 (2, 15, 15),
 (2, 16, 16),

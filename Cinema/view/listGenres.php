@@ -3,6 +3,8 @@
 
 <p class="badge text-bg-info m-1 fs-5"> There are <?= $requete->rowCount() ?> movie genres. </p>
 
+<button><a href="index.php?action=addGenreForm" class="text-decoration-none text-reset">ADD Genre</a></button>
+
 <table class="table table-striped-columns table-sm table-hover"> 
     <thead>
         <tr>
@@ -16,7 +18,7 @@
             foreach($requete->fetchAll() as $id => $film)
             { ?>
                 <tr>
-                    <td> <?= $id ?> </td>
+                    <td> <?= $id+1 ?> </td>
                     <td> <?= $film["genre_name"] ?> </td>
                 </tr>
       <?php } ?>

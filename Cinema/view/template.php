@@ -5,7 +5,7 @@ On aura besoin de déclarer le doctype, les links css / js etc qu'une seule fois
 On exploitera ce qu'on appelle "la temporisation de sortie" en PHP -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,8 +17,8 @@ On exploitera ce qu'on appelle "la temporisation de sortie" en PHP -->
     <body>
         <div id="bodyWrap" class="container">
             <nav class="d-flex align-items-center navbar navbar-expand-lg bg-primary p-1 rounded" data-bs-theme="dark">
-                <a href="#"><img src="public/img/RaiKoh.png" alt="Logo" width="43" height="43" class="d-inline-block align-text-top rounded"></a>
-                <a class="navbar-brand ps-3" href="#"><strong> Middle-Earth Cinema </strong></a>
+                <a href="index.php?action=homePage"><img src="public/img/Raikoh.png" alt="Logo" width="43" height="43" class="d-inline-block align-text-top rounded"></a>
+                <a class="navbar-brand ps-3" href="index.php?action=homePage"><strong> Middle-Earth Cinema </strong></a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="index.php?action=listGenres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -34,7 +34,7 @@ On exploitera ce qu'on appelle "la temporisation de sortie" en PHP -->
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="index.php?action=listFilms" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Films 
+                            Movies 
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="index.php?action=listFilms">Lord of Rings</a></li>

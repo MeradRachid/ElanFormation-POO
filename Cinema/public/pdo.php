@@ -104,9 +104,9 @@
     // Car c'est ce qui nous permet d'optimiser l'exécution de la requête et de prévenir les attaques par injection SQL.
 
     $movies = $stmtCinema->fetchAll();
-    // // Le nom de variable $stmt est couramment utilisé pour représenter un objet de requête préparée (PDOStatement en PHP). 
-    // // Cette convention de nommage est assez répandue dans la communauté PHP pour représenter un objet de requête préparée qui sera utilisé pour exécuter une requête SQL.
-    // // Cela permet de distinguer clairement la requête SQL de la variable qui la stocke.
+    // Le nom de variable $stmt est couramment utilisé pour représenter un objet de requête préparée (PDOStatement en PHP). 
+    // Cette convention de nommage est assez répandue dans la communauté PHP pour représenter un objet de requête préparée qui sera utilisé pour exécuter une requête SQL.
+    // Cela permet de distinguer clairement la requête SQL de la variable qui la stocke.
     
     echo "<h3> Movie Table : </h3>";
 
