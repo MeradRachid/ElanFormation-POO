@@ -9,13 +9,13 @@
                 <p class="card-text">
                     <?php
                         foreach($requete->fetchAll() as $id => $film)
-                         { ?>                 
+                        { ?>                 
                                 <p> Title : <?= $film["movie_title"] ?> </p>
                                 <p> Released on : <?= $film["release_date"] ?> </p>
                                 <p> Duration : <?= $film["duration"] ?> minutes </p> 
                                 <p> Directed by : <?= $film["identity"] ?> </p> 
                                 <p> <?= $film["poster"] ?> </p>
-                    <?php } ?>
+                  <?php } ?>
                 </p>
             </div>
         </div>
@@ -32,7 +32,7 @@
                                 <p class="justify-content-center text-center" style="width: 200px"> 
                                     #<?= $id+1 ?> <?= $film["firstName"] ?>, <?= $film["lastName"] ?> <br> <?= $film["poster"] ?>
                                 </p>
-                        <?php } ?>
+                      <?php } ?>
                     </p>
                 </div>
             </div>

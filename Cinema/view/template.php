@@ -90,7 +90,34 @@ On exploitera ce qu'on appelle "la temporisation de sortie" en PHP -->
             * Qui vont accueillir les éléments provenant des différentes vues
             * Au final, DANS CHAQUE VUE, il faudra TOUJOURS : 
             * Donner une valeur à $titre, $contenu et $titre_secondaire
-            *  */  -->
+            *
+            * CRUD Delete : 
+            ~ Supposons que nous avons une application de gestion de cinéma, avec une table "films" et une table "critiques". 
+            ~ Et que chaque critique est liée à un film à travers une clé étrangère qui référence l'ID du film : > 
+            // Le modèle pour la table des films
+                // class FilmModel 
+                    { // Supprime un film avec l'ID donné et toutes les critiques liées à ce film
+                     // public function deleteFilm($filmID) 
+                        {
+                         // Connexion à la base de données
+                         // $db = new PDO('mysql:host=localhost;dbname=nom_de_la_base_de_donnees', 'nom_d_utilisateur', 'mot_de_passe');
+
+                        // Supprime toutes les critiques liées à ce film en cascade
+                        // $db->query("DELETE FROM critiques WHERE film_id = $filmID");
+
+                        // Supprime le film lui-même
+                        // $db->query("DELETE FROM films WHERE id = $filmID");
+                    // }
+                // }
+            ~ Dans cet exemple, nous avons une classe "FilmModel" qui représente le modèle pour la table "films" dans la base de données. 
+            ~ Cette classe a une méthode "deleteFilm" qui prend un ID de film en paramètre et supprime l'enregistrement correspondant dans la table "films".
+            ~ La méthode "deleteFilm" commence par se connecter à la base de données en utilisant PDO, une extension PHP pour la manipulation des bases de données. 
+            ~ Puis supprime toutes les critiques liées à ce film en cascade en exécutant une requête DELETE sur la table "critiques" avec une condition qui spécifie l'ID du film. 
+            ~ Enfin, elle supprime le film lui-même en exécutant une requête DELETE sur la table "films" avec l'ID du film.
+            ~ Le résultat de cette opération est que tous les enregistrements liés au film sont supprimés de manière cohérente, en commençant par les critiques associées.
+            *
+            *
+            **/  -->
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         </div>

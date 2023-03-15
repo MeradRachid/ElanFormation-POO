@@ -20,11 +20,24 @@
             <label for="rating">Rating Score :</label>
             <input type="number" class="form-control" id="rating" name="rating" min='0' max='5' step="0.1" required>
         </div>
-        
+
+        <div class="form-group mb-3">
+            <label for="director">Director :</label>
+            <select>
+                <option selected> Choose a director </option>
+                <?php   
+                    foreach($sql->fetchAll() as $id => $identity)
+                    { 
+                ?>
+                     <option> <?php $identity ?> </option>
+                <?php
+                    }
+                ?>
+            </select>
         <button type="submit" name="submit" class="d-flex flex-column align-items-center btn btn-primary mb-3">Validate</button>
     </form>
 </div>
-<?php
+<?php // value="< ?php $id+1 ? >" ~ foreach director
 
 $titre = "Ajout Film"; 
 $titre_secondaire = "ajouter film";

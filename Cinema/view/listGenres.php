@@ -18,8 +18,8 @@
             foreach($requete->fetchAll() as $id => $film)
             { ?>
                 <tr>
-                    <td> <?= $id+1 ?> </td>
-                    <td> <?= $film["genre_name"] ?> </td>
+                <td><a href="index.php?action=detailGenre&id=<?= $id+1 ?>"> <?= $id+1 ?> </a></td>
+                    <td> <a class="text-decoration-none text-reset" href="index.php?action=detailGenre&id=<?= $id+1 ?>"> <?= $film["genre_name"] ?> </a></td>
                 </tr>
       <?php } ?>
     </tbody>

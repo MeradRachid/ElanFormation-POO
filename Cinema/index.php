@@ -63,9 +63,9 @@
             case "listActors" : $ctrlCinema->listActors();
                 # code...
             break;
-            case "detailActor" : $ctrlCinema->detailActor($id);
-                # code...
-            break;
+            // case "detailActor" : $ctrlCinema->detailActor($id);
+            //     # code...
+            // break;
             case "addActorForm" : $ctrlCinema->addActorForm();
                 # code...
             break;
@@ -78,9 +78,9 @@
             case "listCharacters" : $ctrlCinema->listCharacters();
                 # code...
             break;
-            case "detailCharacter" : $ctrlCinema->detailCharacter($id);
-                # code...
-            break;
+            // case "detailCharacter" : $ctrlCinema->detailCharacter($id);
+            //     # code...
+            // break;
             case "addCharacterForm" : $ctrlCinema->addCharacterForm();
                 # code...
             break;
@@ -93,9 +93,9 @@
             case "listDirectors" : $ctrlCinema->listDirectors();
                 # code...
             break;
-            case "detailDirector" : $ctrlCinema->detailDirector($id);
-                # code...
-            break;
+            // case "detailDirector" : $ctrlCinema->detailDirector($id);
+            //     # code...
+            // break;
             case "addDirectorForm" : $ctrlCinema->addDirectorForm();
                 # code...
             break;
@@ -119,6 +119,8 @@
             break;
             
             case "homePage" : $ctrlCinema->homePage();
+            break;
+
         }
 
     }
@@ -128,6 +130,7 @@
     }
 
 ?>
+
 
 
 <!-- 

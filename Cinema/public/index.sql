@@ -1,5 +1,14 @@
 -- >> Requêtes SQL à faire :
 
+-- (°) : Gender Actor, identity & Character's name.
+SELECT  p.gender, p.lastName, p.firstName, mc2.character_name
+FROM person p
+JOIN actor a ON p.person_id = a.person_id
+JOIN movie_cast mc ON a.actor_id = mc.actor_id
+JOIN movie_character mc2 ON mc.character_id = mc2.character_id
+JOIN movie m ON mc.movie_id = m.movie_id
+GROUP BY mc2.character_name, p.lastName, p.firstName, p.gender
+
 -- a) Information d'un film (film_id) : titre, année, durée au format(HH:MM) & réalisateur.
 SELECT 
     m.movie_title AS titre, 
@@ -128,7 +137,8 @@ CREATE TABLE Person
     firstName VARCHAR(90) NOT NULL,
     lastName VARCHAR(90) NOT NULL,
     birth_date DATETIME NOT NULL,
-    gender VARCHAR(50) NOT NULL
+    gender VARCHAR(50) NOT NULL,
+    poster VARCHAR(255)
 );
 
 CREATE TABLE Movie_character 
@@ -193,12 +203,12 @@ INSERT INTO genre (genre_id, genre_name) VALUES
 
 -- >> insertion Films : 
 INSERT INTO movie (movie_id, movie_title, release_date, duration, synopsis, rating, poster, director_id) VALUES
-(1, 'The Lord of the Rings: The Fellowship of the Ring', '2001-12-19', SEC_TO_TIME(178*60), 'A young hobbit, Frodo, who has found the One Ring that belongs to the Dark Lord Sauron, begins his journey with eight companions to Mount Doom, the only place where it can be destroyed.', 4.8, NULL, 1),
-(2, 'The Lord of the Rings: The Two Towers', '2002-12-18', SEC_TO_TIME(179*60), 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron''s new ally, Saruman, and his hordes of Isengard.', 4.9, NULL, 1),
-(3, 'The Lord of the Rings: The Return of the King', '2003-12-17', SEC_TO_TIME(201*60), 'Gandalf and Aragorn lead the World of Men against Sauron''s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.', 5, NULL, 1),
-(4, 'The Hobbit: An Unexpected Journey', '2012-12-13', SEC_TO_TIME(169*60), 'A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.', 3.7, NULL, 2),
-(5, 'The Hobbit: The Desolation of Smaug', '2013-12-13', SEC_TO_TIME(161*60), 'The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring.', 4.1, NULL, 2),
-(6, 'The Hobbit: The Battle of the Five Armies', '2014-12-17', SEC_TO_TIME(144*60), 'Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.', 4, NULL, 2);
+(1, 'The Lord of the Rings : The Fellowship of the Ring', '2001-12-19', SEC_TO_TIME(178*60), 'A young hobbit, Frodo, who has found the One Ring that belongs to the Dark Lord Sauron, begins his journey with eight companions to Mount Doom, the only place where it can be destroyed.', 4.8, '<img src="public/img/films/LoR01_FoR.jpg">', 1),
+(2, 'The Lord of the Rings : The Two Towers', '2002-12-18', SEC_TO_TIME(179*60), 'While Frodo and Sam edge closer to Mordor with the help of the shifty Gollum, the divided fellowship makes a stand against Sauron''s new ally, Saruman, and his hordes of Isengard.', 4.9, NULL, 1),
+(3, 'The Lord of the Rings : The Return of the King', '2003-12-17', SEC_TO_TIME(201*60), 'Gandalf and Aragorn lead the World of Men against Sauron''s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.', 5, NULL, 1),
+(4, 'The Hobbit : An Unexpected Journey', '2012-12-13', SEC_TO_TIME(169*60), 'A reluctant hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.', 3.7, NULL, 2),
+(5, 'The Hobbit : The Desolation of Smaug', '2013-12-13', SEC_TO_TIME(161*60), 'The dwarves, along with Bilbo Baggins and Gandalf the Grey, continue their quest to reclaim Erebor, their homeland, from Smaug. Bilbo Baggins is in possession of a mysterious and magical ring.', 4.1, NULL, 2),
+(6, 'The Hobbit : The Battle of the Five Armies', '2014-12-17', SEC_TO_TIME(144*60), 'Bilbo and company are forced to engage in a war against an array of combatants and keep the Lonely Mountain from falling into the hands of a rising darkness.', 4, NULL, 2);
 
 -- >> insertion Personnages : 
 INSERT INTO movie_character (character_id, character_name) VALUES
@@ -243,26 +253,26 @@ INSERT INTO movie_character (character_id, character_name) VALUES
 (39, 'Young Bilbo Baggins');
 
 -- >> insertion Personnes : 
-INSERT INTO person (person_id, firstName, lastName, birth_date, gender) VALUES
-(1, 'Elijah', 'Wood', '1981-01-28', 'M'),
-(2, 'Ian', 'McKellen', '1939-05-25', 'M'),
-(3, 'Viggo', 'Mortensen', '1958-10-20', 'M'),
-(4, 'Orlando', 'Bloom', '1977-01-13', 'M'),
-(5, 'John', 'Rhys-Davies', '1944-05-05', 'M'),
-(6, 'Sean', 'Astin', '1971-02-25', 'M'),
-(7, 'Billy', 'Boyd', '1968-08-28', 'M'),
-(8, 'Dominic', 'Monaghan', '1976-12-08', 'M'),
-(9, 'Christopher', 'Lee', '1922-05-27', 'M'),
-(10, 'Liv', 'Tyler', '1977-07-01', 'F'),
-(11, 'Hugo', 'Weaving', '1960-04-04', 'M'),
-(12, 'Cate', 'Blanchett', '1969-05-14', 'F'),
-(13, 'Sala', 'Baker', '1976-09-22', 'M'),
+INSERT INTO person (person_id, firstName, lastName, birth_date, gender, poster) VALUES
+(1, 'Elijah', 'Wood', '1981-01-28', 'M', '<img src="public/img/persons/ElijahWood.jpg" class="img-fluid rounded w-25" alt="ElijahWood">'),
+(2, 'Ian', 'McKellen', '1939-05-25', 'M', '<img src="public/img/persons/IanMcKellen.jpg" class="img-fluid rounded w-25" alt="IanMcKellen">'),
+(3, 'Viggo', 'Mortensen', '1958-10-20', 'M', '<img src="public/img/persons/ViggoMortensen.jpg" class="img-fluid rounded w-25" alt="ViggoMortensen">'),
+(4, 'Orlando', 'Bloom', '1977-01-13', 'M', '<img src="public/img/persons/OrlandoBloom.jpg" class="img-fluid rounded w-25" alt="OrlandoBloom">'),
+(5, 'John', 'Rhys-Davies', '1944-05-05', 'M', '<img src="public/img/persons/JohnRhys-Davies.jpg" class="img-fluid rounded w-25" alt="JohnRhys-Davies">'),
+(6, 'Sean', 'Astin', '1971-02-25', 'M', '<img src="public/img/persons/SeanAstin.jpg" class="img-fluid rounded w-25" alt="SeanAstin">'),
+(7, 'Billy', 'Boyd', '1968-08-28', 'M', '<img src="public/img/persons/BillyBoyd.jpg" class="img-fluid rounded w-25" alt="BillyBoyd">'),
+(8, 'Dominic', 'Monaghan', '1976-12-08', 'M', '<img src="public/img/persons/DominicMonaghan.jpg" class="img-fluid rounded w-25" alt="DominicMonaghan">'),
+(9, 'Christopher', 'Lee', '1922-05-27', 'M', '<img src="public/img/persons/ChristopherLee.jpg" class="img-fluid rounded w-25" alt="ChristopherLee">'),
+(10, 'Liv', 'Tyler', '1977-07-01', 'F', '<img src="public/img/persons/LivTyler.jpg" class="img-fluid rounded w-25" alt="LivTyler">'),
+(11, 'Hugo', 'Weaving', '1960-04-04', 'M', '<img src="public/img/persons/HugoWeaving.jpg" class="img-fluid rounded w-25" alt="HugoWeaving">'),
+(12, 'Cate', 'Blanchett', '1969-05-14', 'F', '<img src="public/img/persons/CateBlanchett.jpg" class="img-fluid rounded w-25" alt="CateBlanchett">'),
+(13, 'Sala', 'Baker', '1976-09-22', 'M', '<img src="public/img/persons/SalaBaker.jpg" class="img-fluid rounded w-25" alt="SalaBaker">'),
 (14, 'Miranda', 'Otto', '1967-12-15', 'F'),
 (15, 'Karl', 'Urban', '1972-06-07', 'M'),
 (16, 'David', 'Wenham', '1965-09-21', 'M'),
 (17, 'John', 'Noble', '1948-08-20', 'M'),
-(18, 'Andy', 'Serkis', '1964-04-20', 'M'),
-(19, 'Ian', 'Holm', '1931-09-12', 'M'),
+(18, 'Andy', 'Serkis', '1964-04-20', 'M', '<img src="public/img/persons/AndySerkis.jpg" class="img-fluid rounded w-25" alt="AndySerkis">'),
+(19, 'Ian', 'Holm', '1931-09-12', 'M', '<img src="public/img/persons/IanHolm.jpg" class="img-fluid rounded w-25" alt="IanHolm">'),
 (20, 'Martin', 'Freeman', '1971-09-08', 'M'),
 (21, 'Richard', 'Armitage', '1971-08-22', 'M'), 
 (22, 'Benedict', 'Cumberbatch', '1976-07-19', 'M'),
@@ -282,7 +292,7 @@ INSERT INTO person (person_id, firstName, lastName, birth_date, gender) VALUES
 (36, 'Evangeline', 'Lilly', '1979-08-03', 'F'),
 (37, 'Luke', 'Evans', '1979-04-15', 'M'),
 (38, 'Mikael', 'Persbrandt', '1963-09-25', 'M'),
-(39, 'Peter', 'Jackson', '1961-10-31', 'M');
+(39, 'Peter', 'Jackson', '1961-10-31', 'M', '<img src="public/img/persons/PeterJackson.jpg" class="img-fluid img-thumbnail rounded w-25" alt="PeterJackson">');
 
 -- >> insertion Acteurs : 
 INSERT INTO Actor (actor_id, person_id) VALUES
@@ -337,8 +347,8 @@ INSERT INTO director (director_id, person_id) VALUES
 INSERT INTO movie_genre (movie_id, genre_id) 
 VALUES 
 (1, 2),
-(1, 3),
 (2, 1),
+(3, 1),
 (3, 2),
 (3, 3);
 
@@ -360,6 +370,8 @@ VALUES
 (1, 12, 12),
 (1, 13, 13),
 (1, 18, 18),
+(1, 19, 19),
+(1, 39, 38),
 (2, 1, 1),
 (2, 2, 2),
 (2, 3, 3),
@@ -373,7 +385,10 @@ VALUES
 (2, 11, 11),
 (2, 12, 12),
 (2, 13, 13),
-(3, 18, 18),
+(2, 14, 14),
+(2, 15, 15),
+(2, 16, 16),
+(2, 17, 17),
 (3, 1, 1),
 (3, 2, 2),
 (3, 3, 3),
@@ -387,18 +402,13 @@ VALUES
 (3, 11, 11),
 (3, 12, 12),
 (3, 13, 13),
-(2, 14, 14),
-(2, 15, 15),
-(2, 16, 16),
-(2, 17, 17),
 (3, 14, 14),
 (3, 15, 15),
 (3, 16, 16),
 (3, 17, 17),
-(1, 39, 38),
-(3, 39, 38),
-(1, 19, 19),
+(3, 18, 18),
 (3, 19, 19),
+(3, 39, 38),
 (4, 20, 39),
 (5, 20, 39),
 (6, 20, 39),
