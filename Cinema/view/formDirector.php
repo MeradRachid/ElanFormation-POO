@@ -7,9 +7,8 @@
     <button type="submit" name="submit">Validate</button>
 </form>      
 <?php
-
-$titre = "Ajout Réalisateur"; 
-$titre_secondaire = "ajouter realisateur";
+    $titre = "Ajout Réalisateur"; 
+    $titre_secondaire = "ajouter realisateur";
     $contenu = ob_get_clean();
     require "view/template.php";        
 ?>

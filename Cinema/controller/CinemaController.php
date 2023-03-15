@@ -55,17 +55,20 @@
         public function addFilm($array)
         {
             $pdo = Connect::seConnecter();
-
+        
             $ql = $pdo->query('
-                                SELECT d.director_id, Concat(p.firstName, " " , p.lastName) AS identity 
+                                SELECT d.director_id, p.firstName, p.lastName 
                                 FROM person p 
                                 JOIN director d ON d.person_id = p.person_id
                             ');
-        
-            $requete = $pdo->prepare('INSERT INTO movie (movie_title, release_date, duration, rating) 
+
+            $directors = $sql->fetchAll(PDO::FETCH_ASSOC);
+            
+
+            $requete = $pdo->prepare('INSERT INTO movie (movie_title, release_date, duration, rating, director_id) 
                                       VALUES (:movie_title, :release_date, :duration, :rating)
                                     ');
-        
+
             if(isset($_POST['submit']))
             {
                 $movie_title = filter_input(INPUT_POST, "movie_title", FILTER_SANITIZE_FULL_SPECIAL_CHARS);

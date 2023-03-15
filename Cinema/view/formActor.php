@@ -11,9 +11,8 @@
     </form>      
 </div>
 <?php
-
-$titre = "Ajout Acteur"; 
-$titre_secondaire = "ajouter acteur";
+    $titre = "Ajout Acteur"; 
+    $titre_secondaire = "ajouter acteur";
     $contenu = ob_get_clean();
     require "view/template.php";        
 ?>

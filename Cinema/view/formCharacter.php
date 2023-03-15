@@ -8,9 +8,8 @@
     </form>      
 </div>
 <?php
-
-$titre = "Ajout Personnage"; 
-$titre_secondaire = "ajouter personnage";
+    $titre = "Ajout Personnage"; 
+    $titre_secondaire = "ajouter personnage";
     $contenu = ob_get_clean();
     require "view/template.php";        
 ?>

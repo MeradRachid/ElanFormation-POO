@@ -11,7 +11,7 @@
                         { 
                     ?>
                         <p>
-                            <a href="index.php?action=detailFilm&id=<?= $id+1 ?>"> <?= $id+1 ?> </a> : <a class="text-decoration-none text-reset" href="index.php?action=detailFilm&id=<?= $id+1 ?>"> <?= $film["movie_title"] ?> </a>
+                            <a href="index.php?action=detailFilm&id=<?= $id+2 ?>"> <?= $id+1 ?> </a> : <a class="text-decoration-none text-reset" href="index.php?action=detailFilm&id=<?= $id+2 ?>"> <?= $film["movie_title"] ?> </a>
                         </p>
                     <?php 
                         } 
