@@ -4,15 +4,16 @@
     
 ?>
 
-<h1>~ Bienvenue sur Topics List ~</h1>
+<h1>~ Bienvenue ~</h1>
+<h2 class="text-center"> Listes des Topics </h2>
 
-<ul>
+<div class="d-flex justify-content-center">
 
     <?php
         foreach($topics as $topic)
         {
     ?>
-        <div class="card border-success mb-3 text-center" style="max-width: 18rem;">
+        <div class="card border-success m-3 text-center" style="max-width: 18rem;">
             <div class="card-header bg-transparent border-success"><?=$topic->getCreationDate()?></div>
             <div class="card-body text-success">
                 <h5 class="card-title"><a href="index.php?ctrl=forum&action=detailTopic&id=<?=$topic->getId()?>" class="text-reset text-decoration-none"><?=$topic->getTopicTitle()?></a></h5>
@@ -25,4 +26,4 @@
         }    
     ?>
     
-</ul>
+</div>

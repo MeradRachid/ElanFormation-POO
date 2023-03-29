@@ -4,9 +4,10 @@
     
 ?>
 
-<h1 class="text-center">~ Bienvenue sur Categories List ~</h1>
+<h1 class="text-center">~ Bienvenue ~</h1>
+<h2 class="text-center"> Catégories du Forum</h2>
 
-<ul class="d-flex justify-content-center">
+<div class="d-flex justify-content-center">
 
     <?php
         foreach($categories as $category)
@@ -27,4 +28,4 @@
         }
     ?>
 
-</ul>
+</div>

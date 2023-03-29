@@ -1,9 +1,13 @@
-<h1> Connexion Form </h1>
+<h1> Formulaire de Connexion </h1>
 
-<form action="index.php?ctrl=security&action=login" method="post" enctype="multipart">
+<div class="d-flex justify-content-center">
 
-    <input type="text" name="userName" placeholder="Pseudo" required>
-    <input type="password" name="password" placeholder="Password" required>
+    <form action="index.php?ctrl=security&action=login" method="post" enctype="multipart">
 
-    <button type="submit" name="submit"> Connexion </button>
-</form>
+        <input type="text" name="userName" placeholder="Pseudo" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit" name="submit" class="p-1"> Connexion </button>
+    </form>
+
+</div>

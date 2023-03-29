@@ -1,9 +1,10 @@
-<h1>~ Bienvenue sur Topic Detail ~</h1>
-
 <?php
 
     $posts = $result["data"]['posts'];
 ?>
+
+<h1>~ Bienvenue ~</h1>
+<h2 class="text-center"> Messages du Topic</h2>
 
 <?php
     foreach($posts as $post)

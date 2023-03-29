@@ -52,9 +52,9 @@ CREATE TABLE Post
 INSERT INTO User (id_user, userName, registerDate, role, email, password)
 VALUES
 (1, "Mac Intosh", "2023-03-16 00:59:00", "ROLE_ADMIN", "sql@gmail.com", 'Test-12345678'),
-(2, "Lee Nux", "2023-03-20 ", "ROLE_USER", "user@gmail.com", 'Test-12345678'),
-(3, 'Wynn Doz', "2023-03-27 ", "ROLE_USER", 'test@gmail.com', 'Test-12345678'),
-(4, 'Oun Bunt&ucirc;', "2023-03-20 ", "ROLE_USER", 'test@test.fr', 'Test-12345678'),
+(2, "Lee Nux", "2023-03-20 09:09:09", "ROLE_USER", "user@gmail.com", 'Test-12345678'),
+(3, 'Wynn Doz', "2023-03-22 10:54:33", "ROLE_USER", 'test@gmail.com', 'Test-12345678'),
+(4, 'Oun Bunt&ucirc;', "2023-03-26 07:55:46", "ROLE_USER", 'test@test.fr', 'Test-12345678'),
 (5, 'Andr Ho&iuml;d', NULL, "ROLE_USER", 'i-bot@email.com', 'Test-12345678');
 
 -- >> insertion Categories :

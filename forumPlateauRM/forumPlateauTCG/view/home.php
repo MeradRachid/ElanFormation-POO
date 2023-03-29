@@ -1,5 +1,6 @@
     
-    <h1 class="text-center">~ Bienvenue sur le forum du "Plateau" ~</h1>
+    <h1 class="text-center">~ Bienvenue ~</h1>
+    <h2 class="text-center"> Accueil du Forum</h2>
 
 
 <div class="d-flex">

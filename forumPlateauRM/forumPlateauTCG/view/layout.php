@@ -7,23 +7,23 @@
     <script src="https://cdn.tiny.cloud/1/zg3mwraazn1b2ezih16je1tc6z7gwp5yd4pod06ae5uai8pa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="<?= PUBLIC_DIR ?>/css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
     <link rel="icon" type="image/png" href="public/img/moon.jpg">
     <title>FORUM DU PLATEAU</title>
 </head>
 
-<body class="p-3 mb-2 bg-secondary-subtle text-emphasis-secondary" background="public/img/bg_bggenerator_com.png">
-    <div id="wrapper" class="container p-3 mb-2 bg-primary-subtle text-emphasis-secondary">
+<body class="bg-secondary-subtle text-emphasis-secondary no-repeat" background="public/img/bg_bggenerator_com.png">
+    <div id="wrapper" class="container d-flex flex-column bg-primary-subtle">
        <div id="mainpage">
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
             <h3 class="message" style="color: red"><?= App\Session::getFlash("error") ?></h3>
             <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
 
             <header>
-            <nav class="d-flex align-items-center justify-content-center navbar navbar-expand-lg bg-secondary p-1 rounded" data-bs-theme="dark">
+            <nav class="d-flex align-items-center justify-content-between navbar navbar-expand-lg bg-secondary p-1 rounded" data-bs-theme="dark">
                 <a href="index.php?action=homePage"><img src="public/img/moon.jpg" alt="Logo" width="43px" height="43px" class="d-inline-block align-text-top rounded"></a>
-                <a class="navbar-brand ps-3" href="index.php?action=homePage"><strong> Forum du Plateau </strong></a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="navbar-brand" href="index.php?action=homePage"><strong> COMMUNAUTÉ FRANÇAISE DES JOUEURS DE TCG : RÉGION GRAND-EST </strong></a>
+                <ul class="navbar-nav">
                     <li class="nav-item dropdown d-flex">
                         <ul class="d-flex align-items-center justify-content-center">
                             <?php
@@ -72,7 +72,7 @@
                 </nav>
            </header>
            
-           <main id="forum"> 
+           <main id="forum" class="d-flex flex-column"> 
 
                 <?= $page ?> <!-- C'est ici qu'on applique la temporisation de sortie avec $page == $content( ou $contenu) -->
 
@@ -80,7 +80,7 @@
 
        </div>
 
-       <footer>
+       <footer class="text-center">
             <p>&copy; 2020 - Forum CDA - <a href="/home/forumRules.html">Règlement du forum</a> - <a href="">Mentions légales</a></p>
             <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
        </footer>
