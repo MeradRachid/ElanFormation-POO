@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+ }
+
+    nav
+    {
+        display: flex;
+    }
+
+    a
+    {
+        text-decoration: dashed;
+    }
+
+    h1 
+    {
+        color: royalblue;
+        text-align: center;
+    }
+
+    p
+    {
+        font-family: Georgia, Verdana, Tahoma, sans-serif;
+    }
