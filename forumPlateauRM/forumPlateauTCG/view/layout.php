@@ -26,12 +26,22 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown d-flex">
                         <ul class="d-flex align-items-center justify-content-center">
+                            <p>
+                                <?php
+                                    if(App\Session::isAdmin())
+                                    {
+                                        ?>
+                                            <a href="index.php?ctrl=forum&action=listUsers" class="m-1"> ADMINS : Voir la liste des utilisateurs</a>
+                                        <?php
+                                    }
+                                ?>
+                            </p>
                             <?php
                                 if(App\Session::getUser())
                                 {
                             ?>
-                                    <a href="/security/viewProfile.html">
-                                        <span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?>
+                                    <a href="#" alt="security/viewProfile.html" class="m-1">
+                                        <span class="fas fa-user"></span>&nbsp; <?php App\Session::getUser() ?>
                                     </a> 
 
                                     <a href="index.php?ctrl=security&action=logout">Déconnexion</a> 
@@ -57,18 +67,8 @@
                             <?php
                                 }
                             ?>
+                </ul>
 
-                        <p>
-                            <?php
-                                if(App\Session::isAdmin())
-                                {
-                                    ?>
-                                        <a href="index.php?ctrl=home&action=users">Voir la liste des utilisateurs</a>
-                                    <?php
-                                }
-                            ?>
-                        </p>
-                    </ul>
                 </nav>
            </header>
            

@@ -21,9 +21,18 @@
             </div>
             <div class="card-footer bg-transparent border-success"><a href="index.php?ctrl=forum&action=detailUser&id=1" class="text-decoration-none">By : Mac Intosh</a></div>
         </div>
+        <?php ($topic->getUser()->getId() == App\Session::getUser()->getId() || App\Session::getUser()->hasRole("ROLE_ADMIN"))
+            ? '<a href="#">
+                <img src="public/img/unlock-solid.svg" width="75%" height="75%" alt="penToSquare">
+               </a>
+
+               <a href="#">
+                <img src="public/img/lock-solid.svg" width="75%" height="75%" alt="trash">
+               </a>'
+            : "" 
+        ?> 
 
     <?php
         }    
     ?>
-    
 </div>

@@ -76,7 +76,7 @@
 
         public function listUsers()
         {
-            // $this->restrictTo("ROLE_ADMIN");
+            $this->restrictTo("ROLE_ADMIN");
             $userManager = new UserManager();
             
             return 
@@ -119,18 +119,8 @@
         //         ]
         //     ];
         // }
-        // public function detailPost($id)
-        // {
-        //     $postManager = new PostManager();
-        //     return 
-        //     [
-        //         "view" => VIEW_DIR."forum/detailTopic.php",
-        //         "data" => 
-        //         [
-        //             "posts" => $postManager->findByTopic($id, ["creationDate", "ASC"])
-        //         ]
-        //     ];
-        // }
+
+
 
     }
 

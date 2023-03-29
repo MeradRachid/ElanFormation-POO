@@ -11,7 +11,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                <h5 class="card-title"><a href="index.php?ctrl=forum&action=listCategories" class="text-decoration-none">Categories lists</a></h5>
+                <h5 class="card-title"><a href="index.php?ctrl=forum&action=listCategories" class="text-decoration-none">Voir toutes les catégories : </a></h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 15 mins ago</small></p>
                 </div>
@@ -26,7 +26,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                <h5 class="card-title"><a href="index.php?ctrl=forum&action=listUsers" class="text-decoration-none">Users lists</a></h5>
+                <h5 class="card-title"><a href="index.php?ctrl=forum&action=listTopics" class="text-decoration-none">Voir la liste des topics : </a></h5>
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>

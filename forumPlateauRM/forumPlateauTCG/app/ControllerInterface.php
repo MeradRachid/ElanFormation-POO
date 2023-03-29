@@ -2,7 +2,8 @@
 
     namespace App;
 
-    interface ControllerInterface{
+    interface ControllerInterface
+    {
 
         public function index();
     }

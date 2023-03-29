@@ -12,7 +12,8 @@
         private $email;
         private $password;
 
-        public function __construct($data){         
+        public function __construct($data)
+        {         
             $this->hydrate($data);        
         }
  
@@ -56,12 +57,14 @@
                 return $this;
         }
 
-        public function getRegisterDate(){
+        public function getRegisterDate()
+        {
             $formattedDate = $this->registerDate->format("l/d/M/Y - H:i:s");
             return $formattedDate;
         }
 
-        public function setRegisterDate($date){
+        public function setRegisterDate($date)
+        {
             $this->registerDate = new \DateTime($date);
             return $this;
         }
@@ -76,14 +79,18 @@
 
      
         public function setRole($role)
-        { $this->role = json_decode($role);
-                 if(empty($this->roles)){ 
-                        $this->roles[] = "ROLE_USER"; 
-                } 
+        { 
+                $this->role = json_decode($role);
+                 if(empty($this->role))
+                 { 
+                        $this->role[] = "ROLE_USER"; 
+                 } 
         } 
         
-        public function hasRole($role){ 
-                return in_array($role, $this->getRole()); 
+        public function hasRole($role)
+        {
+                $result = $this->role == $role; 
+                return $result; 
         }
 
         /**

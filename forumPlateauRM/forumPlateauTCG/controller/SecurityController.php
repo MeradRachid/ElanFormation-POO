@@ -85,6 +85,7 @@
         }
 
 
+
         public function loginForm()
         {
             return
@@ -118,9 +119,11 @@
                     // Le mot de passe est correct, on met en session l'utilisateur connecté
                     $_SESSION['user'] = $user;
 
-                    SESSION::setUser($userName);
+                    // SESSION::setUser($userName);
                     
-                    echo "Bienvenue ".$_SESSION['userName'];
+                    // echo "Bienvenue ".$_SESSION['userName'];
+
+                    // var_dump($user->getUser()->getId());
 
                     // Redirection vers la page d'accueil
                     header('Location: index.php?action=home');
