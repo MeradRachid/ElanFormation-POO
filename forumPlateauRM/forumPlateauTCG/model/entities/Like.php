@@ -5,35 +5,34 @@
 
     final class Like extends Entity
     {
-        private $status;
-        private $topic;
-        private $user;
+        private Topic $topic ;
+        private User $user;
 
         public function __construct($data)
         {         
             $this->hydrate($data);        
         }
- 
+   
 
-        /**
-         * Get the value of status
-         */ 
-        public function getStatus()
-        {
-                return $this->status;
-        }
+         /**
+          * Get the value of topic
+          */ 
+         public function getTopic()
+         {
+                  return $this->topic;
+         }
 
-        /**
-         * Set the value of status
-         *
-         * @return  self
-         */ 
-        public function setStatus($status)
-        {
-                $this->status = $status;
+         /**
+          * Set the value of topic
+          *
+          * @return  self
+          */ 
+         public function setTopic($topic)
+         {
+                  $this->topic = $topic;
 
-                return $this;
-        }
+                  return $this;
+         }
 
         /**
          * Get the value of user
@@ -51,38 +50,6 @@
         public function setUser($user)
         {
                 $this->user = $user;
-
-                return $this;
-        }
-
-        public function getCreationDate()
-        {
-            $formattedDate = $this->creationDate->format("l/d/M/Y - H:i:s");
-            return $formattedDate;
-        }
-
-        public function setCreationDate($date)
-        {
-            $this->creationDate = new \DateTime($date);
-            return $this;
-        }
-    
-        /**
-         * Get the value of topic
-         */ 
-        public function getTopic()
-        {
-                return $this->topic;
-        }
-
-        /**
-         * Set the value of topic
-         *
-         * @return  self
-         */ 
-        public function setMessage($topic)
-        {
-                $this->topic = $topic;
 
                 return $this;
         }

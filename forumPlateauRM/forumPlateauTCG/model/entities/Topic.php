@@ -18,6 +18,7 @@
         private $topicTitle;
         private $creationDate;
         private $topicLocked;
+        private $likes;
 
         public function __construct($data)
         {         
@@ -136,6 +137,26 @@
                 return $this;
         }
     
+
+        /**
+         * Get the value of likes
+         */ 
+        public function getLikes()
+        {
+                return $this->likes;
+        }
+
+        /**
+         * Set the value of likes
+         *
+         * @return  self
+         */ 
+        public function setLikes($likes)
+        {
+                $this->likes = $likes;
+
+                return $this;
+        }
     }
 
 ?>

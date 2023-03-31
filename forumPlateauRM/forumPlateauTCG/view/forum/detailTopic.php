@@ -2,10 +2,17 @@
 
     $posts = $result["data"]['posts'];
 
+    $topic = $result['data']['topic']
+
 ?>
 
 <h1>~ Bienvenue ~</h1>
 <h2 class="text-center"> Messages du Topic</h2>
+
+
+<form action="index.php?ctrl=forum&action=like&id=<?=$topic->getId()?>" method="post">
+    <button type="submit">Liked <?= $topic->getLikes() ? "(" .$topic->getLikes(). ")" : "" ?></button>
+</form>
 
 <?php
     foreach($posts as $post)
@@ -16,11 +23,7 @@
                 <tr>
                 <th> 
 
-                    <?=$post->getCreationDate()?>
-                    
-                    <form action="index.php?ctrl=forum&action=like&id=<?=$post->getId()?>" method="post">
-                        <button type="submit">Like </button>
-                    </form> 
+                    <?=$post->getCreationDate()?> <?= $topic->getTopicTitle(); ?> 
 
                 </th>
                 </tr>
@@ -28,15 +31,13 @@
             <tbody class="table-group-divider">
                 <tr>
                     <td>
-                        <em> <?=$post->getMessage()?> </em>
-
-                        
+                        <em> <?=$post->getMessage()?> </em>                        
                     </td>
                 </tr>                
             </tbody>
         </table>
 <?php        
-           var_dump($_SESSION['user']);
+        var_dump($topic->getLikes());
     }
 ?>
 
