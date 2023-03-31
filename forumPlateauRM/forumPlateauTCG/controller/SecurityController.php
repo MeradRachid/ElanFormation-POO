@@ -120,19 +120,30 @@
                     $_SESSION['user'] = $user;
 
                     // SESSION::setUser($userName);
-                    
-                    // echo "Bienvenue ".$_SESSION['userName'];
 
-                    // var_dump($user->getUser()->getId());
+                    return
+                    [
+                        "view" => VIEW_DIR."home.php",
+                        SESSION::addFlash("sucess", "Bonjour ".$userName."Heureux de vous compter parmi nous.")
+                    ];
 
                     // Redirection vers la page d'accueil
-                    header('Location: index.php?action=home');
+                    $this->redirectTo("forum","home");
+
+                    // header('Location: index.php?action=home'); 
+
                     exit();
                 }
                  else 
                 {
+                    return
+                    [
+                        "view" => VIEW_DIR."home.php",
+                        SESSION::addFlash("error", "Saisie incorrecte, vous n'êtes pas connecté.")
+                    ];
+
                     // Le mot de passe est incorrect, on affiche un message d'erreur
-                    echo "Saisie incorrecte, vous n'êtes pas connecté";
+                    // echo "Saisie incorrecte, vous n'êtes pas connecté";
                 }            
 
             }

@@ -9,10 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="icon" type="image/png" href="public/img/moon.jpg">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <title>FORUM DU PLATEAU</title>
 </head>
 
-<body class="bg-secondary-subtle text-emphasis-secondary no-repeat" background="public/img/bg_bggenerator_com.png">
+<body class="bg-image bg-secondary-subtle text-emphasis-secondary" background="public/img/forumBGTCG.jpg">
     <div id="wrapper" class="container d-flex flex-column bg-primary-subtle">
        <div id="mainpage">
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
@@ -85,8 +86,8 @@
             <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
        </footer>
    </div>
-
-   <script
+<!-- 
+   <script 
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
         crossorigin="anonymous">
@@ -132,11 +133,12 @@
                 }
             )
         })*/
-    </script>
-        
+    </script>        
+-->        
+
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     
 </body>
 </html>

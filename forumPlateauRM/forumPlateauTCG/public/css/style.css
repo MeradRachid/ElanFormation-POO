@@ -23,3 +23,10 @@
     {
         font-family: Georgia, Verdana, Tahoma, sans-serif;
     }
+
+    .bg-image
+    {
+        background-size:auto;
+        background-color: darkslateblue;
+    }
+      

@@ -9,6 +9,7 @@
     use Model\Managers\TopicManager;
     use Model\Managers\PostManager; 
     use Model\Managers\UserManager;
+    use Model\Managers\LikeManager;
 
     class ForumController extends AbstractController implements ControllerInterface
     {
@@ -103,6 +104,43 @@
                 ]
             ];
 
+        }
+
+
+
+        public function like()
+        {
+            // if button submit pressed 
+            if(!isset($_POST['submit']))
+            {
+                $likeManager = new LikeManager(); 
+
+                // get the user in session 
+                $user = SESSION::getUser()->getId(); 
+
+                // get the id of the topic 
+                $topic = $_GET['id']; 
+
+                // look if there is a dublicate of the user and the topic 
+                $userLike=$likeManager->findOneByPseudo($user); 
+                $TopicLike=$likeManager->findOneByTopic($topic);
+
+                // if the user or the topic hasn't been liked yet then add to db 
+                if (!$userLike || !$TopicLike) 
+                { 
+                    $likeManager->add([ "user_id" => $user, "topic_id" => $topic, ]);
+                    // header("location:index.php?ctrl=forum&action=detailTopic&id=".$topic); 
+                    $this->redirectTo("forum","detailTopic", $topic);
+                } 
+                 else
+                 {
+                     
+                     $likeManager->deleteLike($topic, $user);
+                    //  and redirect to the topic page 
+                     $this->redirectTo("forum","detailTopic", $topic);   
+                 } // the user has already liked the topic then delete the like from db 
+ 
+            } 
         }
 
 

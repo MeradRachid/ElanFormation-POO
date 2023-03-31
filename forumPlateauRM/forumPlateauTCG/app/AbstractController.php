@@ -11,12 +11,13 @@
 
             if($ctrl != "home")
             {
-                $url = $ctrl ? "/".$ctrl : "";
-                $url.= $action ? "/".$action : "";
-                $url.= $id ? "/".$id : "";
+                $url = $ctrl ? "?ctrl=".$ctrl : "";
+                $url.= $action ? "&action=".$action : ""; 
+                $url.= $id ? "&id=".$id : "";
                 // $url.= ".html";
             }
             else $url = "/";
+            
             header("Location: $url");
             die();
 
@@ -27,7 +28,7 @@
             
             if(!Session::getUser() || !Session::getUser()->hasRole($role))
             {
-                $this->redirectTo("security", "login");
+                $this->redirectTo("forum", "home");
             }
             return;
         }

@@ -22,7 +22,8 @@ CREATE TABLE Category
 (
     id_category INT PRIMARY KEY AUTO_INCREMENT,
     categoryName VARCHAR(90) NOT NULL,
-    creationDate DATETIME NOT NULL 
+    creationDate DATETIME NOT NULL, 
+    likes INT NULL
 );
 
 CREATE TABLE Topic 
@@ -48,7 +49,7 @@ CREATE TABLE Post
     FOREIGN KEY (user_id) REFERENCES User(id_user)
 );
 
--- >> insertion Utilisateurs :  
+-- >> insertion Utilisateurs :  (Mettre JSON & registerDate en NULL lors de la création de la DB pour éviter les erreurs)
 INSERT INTO User (id_user, userName, registerDate, role, email, password)
 VALUES
 (1, "Mac Intosh", "2023-03-16 00:59:00", "ROLE_ADMIN", "sql@gmail.com", 'Test-12345678'),
@@ -74,3 +75,10 @@ INSERT INTO Post (id_post, topic_id, user_id, creationDate, message)
 VALUES
 (1, 1, 1, "2023-03-19 16:45:32", "Le réglement, tu respecteras..."),
 (2, 2, 2, "2023-03-20 12:21:30", " Hello World !!!"); 
+(3, 2, 1, "2023-03-20 14:41:30", " Hello To You ~;-P)"); 
+
+
+-- UPDATE topic t 
+-- SET t.likes = (SELECT COUNT(*) FROM `like` l WHERE l.topic_id = 1)
+-- WHERE t.id_topic = 1
+

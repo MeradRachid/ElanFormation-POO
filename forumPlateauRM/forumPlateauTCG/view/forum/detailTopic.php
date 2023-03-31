@@ -1,6 +1,7 @@
 <?php
 
     $posts = $result["data"]['posts'];
+
 ?>
 
 <h1>~ Bienvenue ~</h1>
@@ -13,19 +14,29 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                <th> <?=$post->getCreationDate()?> </th>
+                <th> 
+
+                    <?=$post->getCreationDate()?>
+                    
+                    <form action="index.php?ctrl=forum&action=like&id=<?=$post->getId()?>" method="post">
+                        <button type="submit">Like </button>
+                    </form> 
+
+                </th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 <tr>
                     <td>
                         <em> <?=$post->getMessage()?> </em>
+
+                        
                     </td>
                 </tr>                
             </tbody>
         </table>
 <?php        
-        //    var_dump($post);
+           var_dump($_SESSION['user']);
     }
 ?>
 
