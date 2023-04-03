@@ -20,21 +20,48 @@
         
             $topicId = isset($_GET['topic_id']) ? $_GET['topic_id'] : null; // Vérifiez que le paramètre topic_id est défini
         
+            $likes = 0; // Valeur par défaut si $topicId n'est pas défini 
+
+            if (isset($topicId)) 
+            {
+                $likes = $likeManager->countLikes($topicId);
+                $_SESSION['likes'] = $likes;
+            } 
+            elseif (isset($_SESSION['likes'])) 
+            {
+                $likes = $_SESSION['likes'];
+            }
+        
             return 
             [
                 "view" => VIEW_DIR."forum/listTopics.php",
-                "data" => [
+                "data" => 
+                [
                     "topics" => $topicManager->findAll(["creationDate", "ASC"]),
-                    "likes" => $likeManager->updateLikes($topicId), // Transmettez l'ID du topic à la méthode updateLikes()
+                    "likes" => $likes
                 ]
             ];
-
         }
+
+        
 
         public function detailTopic($id)
         {
             $postManager = new PostManager();
             $topicManager = new TopicManager();
+            $likeManager = new LikeManager();
+
+            // Récupérer le nombre de likes à partir de la session, s'il existe
+            $likes = isset($_SESSION['likes']) ? $_SESSION['likes'] : null;
+
+            // Si le nombre de likes n'est pas enregistré en session, le récupérer de la base de données
+            if(!$likes) 
+            {
+                $likes = $likeManager->countLikes($id);
+
+                // Enregistrer le nombre de likes en session
+                $_SESSION['likes'] = $likes;
+            }
 
             return 
             [
@@ -42,8 +69,8 @@
                 "data" => 
                 [
                     "posts" => $postManager->findByTopic($id),
-
-                    "topic" => $topicManager->findOneById($id)
+                    "topic" => $topicManager->findOneById($id),
+                    "likes" => $likes
                 ]
             ];
 
@@ -113,43 +140,6 @@
         }
 
 
-/*
-        public function liked()
-        {
-            // if button submit pressed 
-            // if(!isset($_POST['submit']))
-            // {
-                $likeManager = new LikeManager(); 
-
-                // get the user in session 
-                $user = SESSION::getUser()->getId(); 
-
-                // get the id of the topic 
-                $topic = $_GET['id']; 
-
-                // look if there is a dublicate of the user and the topic 
-                $userLike=$likeManager->findOneByPseudo($user); 
-                $TopicLike=$likeManager->findOneByTopic($topic);
-
-                // if the user or the topic hasn't been liked yet then add to db 
-                if (!$userLike || !$TopicLike) 
-                { 
-                    $likeManager->add([ "user_id" => $user, "topic_id" => $topic ]);
-                    header("location:index.php?ctrl=forum&action=detailTopic&id=".$topic); 
-                    // $this->redirectTo("forum","listTopic");
-                } 
-                 else
-                 {
-                    $likeManager->deleteLike($topic, $user);
-                    //  and redirect to the topic page 
-                    //  $this->redirectTo("forum","listTopic");   
-                    header("location:index.php?ctrl=forum&action=detailTopic&id=".$topic);
-                 } // the user has already liked the topic then delete the like from db 
-
-                 $likeManager->updateLikes($topic);
-                 // } 
-                }                
-*/
 
         public function like()
         { 
@@ -172,7 +162,7 @@
                 // if the user hasn't liked the topic then 
                 if (!$userLike) 
                 { 
-                    $likeManager->add([ "user_id" => $user, "topic_id" => $topic, ]);
+                    $likeManager->add([ "user_id" => $user, "topic_id" => $topic ]);
                     header("location:index.php?ctrl=forum&action=detailTopic&id=".$topic); 
                 }
                 else    
@@ -182,7 +172,7 @@
                     header("location:index.php?ctrl=forum&action=detailTopic&id=".$topic); 
                 }
                 // count the number of like on a topic 
-                $likeManager->updateLikes($topic);
+                $likeManager->countLikes($topic);
             } 
 
         }

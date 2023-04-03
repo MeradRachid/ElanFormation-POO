@@ -2,8 +2,11 @@
 
     $posts = $result["data"]['posts'];
 
-    $topic = $result['data']['topic']
+    $topic = $result['data']['topic'];
 
+    $like = $result["data"]["likes"];
+
+    // var_dump($like); 
 ?>
 
 <h1>~ Bienvenue ~</h1>
@@ -11,7 +14,7 @@
 
 
 <form action="index.php?ctrl=forum&action=like&id=<?=$topic->getId()?>" method="post">
-    <button type="submit" class="rounded p-1 border-info">Liked <?= $topic->getLikes() ? "(" .$topic->getLikes(). ")" : "" ?></button>
+    <button type="submit" class="rounded p-1 border-info">Liked <?= $like ? "(" . $like . ")" : "" ?> </button>
 </form>
 
 <?php
@@ -42,13 +45,12 @@
             </tbody>
         </table>
 <?php        
-        // var_dump($topic->getLikes()); 
+
     }
 ?>
 
 
 
 <?php
-
-// var_dump($topic);   
+   
 ?>

@@ -116,10 +116,6 @@
                     // On récupère le hash dans la base de données
                     $hash = $user->getPassword();
 
-                    var_dump($user);
-                    var_dump($hash);
-                    // die();
-
                     if(password_verify($password, $hash))
                     {
 
@@ -159,61 +155,62 @@
         }
         
 
-        public function login0()
-        {            
-            // On doit utiliser password_verify avant de mettre en session l'user.
+        // public function login0()
+        // {            
+        //     // On doit utiliser password_verify avant de mettre en session l'user.
             
-            if(!empty($_POST))
-            {
-                // Récupération du pseudo et du mot de passe saisis par l'utilisateur
-                $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            }
+        //     if(!empty($_POST))
+        //     {
+        //         // Récupération du pseudo et du mot de passe saisis par l'utilisateur
+        //         $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        //         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        //     }
 
-            if($userName && $password)
-            {
-                // Connexion à la base de données via le manager 
-                $manager = new UserManager();
+        //     if($userName && $password)
+        //     {
+        //         // Connexion à la base de données via le manager 
+        //         $manager = new UserManager();
 
-                // Requête SQL pour récupérer l'utilisateur correspondant au pseudo saisi
-                $user = $manager->findOneByUsername($userName);
+        //         // Requête SQL pour récupérer l'utilisateur correspondant au pseudo saisi
+        //         $user = $manager->findOneByUsername($userName);
 
-                // Vérification du mot de passe correspondant à l'user choisi.
-                if ($user && password_verify($password, $user->getPassword())) 
-                {
-                    // Le mot de passe est correct, on met en session l'utilisateur connecté
-                    $_SESSION['user'] = $user;
+        //         // Vérification du mot de passe correspondant à l'user choisi.
+        //         if ($user && password_verify($password, $user->getPassword())) 
+        //         {
+        //             // Le mot de passe est correct, on met en session l'utilisateur connecté
+        //             $_SESSION['user'] = $user;
 
-                    SESSION::setUser($user);
+        //             SESSION::setUser($user);
 
-                    return
-                    [
-                        "view" => VIEW_DIR."home.php",
-                        SESSION::addFlash("sucess", "Bonjour ".$userName."Heureux de vous compter parmi nous.")
-                    ];
+        //             return
+        //             [
+        //                 "view" => VIEW_DIR."home.php",
+        //                 SESSION::addFlash("sucess", "Bonjour ".$userName."Heureux de vous compter parmi nous.")
+        //             ];
 
-                    // Redirection vers la page d'accueil
-                    $this->redirectTo("forum","home");
+        //             // $this->redirectTo("security", "loginForm");
+        //             // Redirection vers la page d'accueil
+        //             $this->redirectTo("forum", "home");
 
-                    // header('Location: index.php?action=home'); 
+        //             // header('Location: index.php?action=home'); 
 
-                    exit();
-                }
-                 else 
-                {
-                    return
-                    [
-                        "view" => VIEW_DIR."home.php",
-                        SESSION::addFlash("error", "Saisie incorrecte, vous n'êtes pas connecté.")
-                    ];
+        //             exit();
+        //         }
+        //          else 
+        //         {
+        //             return
+        //             [
+        //                 "view" => VIEW_DIR."home.php",
+        //                 SESSION::addFlash("error", "Saisie incorrecte, vous n'êtes pas connecté.")
+        //             ];
 
-                    // Le mot de passe est incorrect, on affiche un message d'erreur
-                    // echo "Saisie incorrecte, vous n'êtes pas connecté";
-                }            
+        //             // Le mot de passe est incorrect, on affiche un message d'erreur
+        //             // echo "Saisie incorrecte, vous n'êtes pas connecté";
+        //         }            
 
-            }
+        //     }
             
-        }
+        // }
 
         public function logout()
         {

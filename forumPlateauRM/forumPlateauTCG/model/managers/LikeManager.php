@@ -13,32 +13,29 @@ class LikeManager extends Manager
         parent::connect();
     }
 
-    
-    
+
+
     // find a topic 
     public function findOneByTopic($data)
     {
         $sql = "SELECT * FROM `" . $this->tableName . "` u WHERE u.topic_id = :id ";
         return $this->getOneOrNullResult(DAO::select($sql, ['id' => $data], false), $this->className);
     }
-    
-    
+
+
     // find a pseudo 
     public function findOneByPseudo($user, $topic)
-    { 
-        $sql = "SELECT * FROM `".$this->tableName."` u WHERE u.user_id = ? AND u.topic_id = ? "; 
-        return $this->getOneOrNullResult( DAO::select($sql, [$user, $topic], false), $this->className ); 
+    {
+        $sql = "SELECT * FROM `" . $this->tableName . "` u WHERE u.user_id = ? AND u.topic_id = ? ";
+        return $this->getOneOrNullResult(DAO::select($sql, [$user, $topic], false), $this->className);
     }
- 
 
 
-    public function countLikes($id)
-    { 
-        
-        $sql = "UPDATE topic t SET likes = ( SELECT COUNT(*) FROM `". $this->tableName . "` l WHERE l.topic_id = ? ) WHERE t.id_topic = ?";
-        // return $this->getOneOrNullResult(DAO::select($sql, [$topicID, $topicID]), $this->className);
 
-        return $this->getOneOrNullResult( DAO::select($sql, [$id], false), $this->className ); 
+    public function countLikes($topicID)
+    {
+        $sql = "SELECT COUNT(*) FROM `" . $this->tableName . "` l WHERE l.topic_id = ?";
+        return $this->getSingleScalarResult(DAO::select($sql, [$topicID], false));
     }
 
     // delete a like on a specific id of topic and user id 
@@ -46,12 +43,6 @@ class LikeManager extends Manager
     {
         $sql = "DELETE FROM `" . $this->tableName . "` WHERE topic_id = ? and user_id = ? ";
         return DAO::delete($sql, [$topic, $user]);
-    }
-
-    public function updateLikes($topicID)
-    {
-        $sql = "UPDATE topic t SET likes = ( SELECT COUNT(*) FROM `". $this->tableName . "` l WHERE l.topic_id = ? ) WHERE t.id_topic = ?";
-        return $this->getOneOrNullResult(DAO::select($sql, [$topicID, $topicID]), $this->className);
     }
 
 }
