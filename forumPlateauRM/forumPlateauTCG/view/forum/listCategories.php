@@ -7,6 +7,8 @@
 <h1 class="text-center">~ Bienvenue ~</h1>
 <h2 class="text-center"> Catégories du Forum</h2>
 
+<button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Category</button>
+
 <div class="d-flex justify-content-center">
 
     <?php

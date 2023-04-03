@@ -27,7 +27,7 @@ class UserManager extends Manager
 
     public function findOneByUserName($data)
     {
-        $sql = "SELECT userName, id_user, role
+        $sql = "SELECT userName, id_user, role, password
         FROM ".$this->tableName." u
         WHERE u.userName = :userName
         ";

@@ -11,7 +11,7 @@
 
 
 <form action="index.php?ctrl=forum&action=like&id=<?=$topic->getId()?>" method="post">
-    <button type="submit">Liked <?= $topic->getLikes() ? "(" .$topic->getLikes(). ")" : "" ?></button>
+    <button type="submit" class="rounded p-1 border-info">Liked <?= $topic->getLikes() ? "(" .$topic->getLikes(). ")" : "" ?></button>
 </form>
 
 <?php
@@ -23,7 +23,7 @@
                 <tr>
                 <th> 
 
-                    <?=$post->getCreationDate()?> <?= $topic->getTopicTitle(); ?> 
+                    <?=$post->getCreationDate()?>
 
                 </th>
                 </tr>
@@ -31,13 +31,18 @@
             <tbody class="table-group-divider">
                 <tr>
                     <td>
-                        <em> <?=$post->getMessage()?> </em>                        
+                        <?=$post->getMessage()?>   
                     </td>
                 </tr>                
+                <tr>
+                    <td> 
+                        <em> <a href="index.php?ctrl=forum&action=detailUser&id=<?=$topic->getUser()->getId()?>" class="text-decoration-none"> By : <?= $topic->getUser()->getUserName() ?> </a>, in <?= $topic->getTopicTitle() ?> </em>
+                    </td>
+                </tr>
             </tbody>
         </table>
 <?php        
-        var_dump($topic->getLikes());
+        // var_dump($topic->getLikes()); 
     }
 ?>
 

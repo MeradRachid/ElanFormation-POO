@@ -7,8 +7,10 @@
 <h1>~ Bienvenue ~</h1>
 <h2 class="text-center"> Listes des Topics </h2>
 
-<div class="d-flex justify-content-center">
+<button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>
 
+<div class="d-flex justify-content-center">
+    
     <?php
         foreach($topics as $topic)
         {
@@ -21,8 +23,9 @@
                     <button type="submit" class="rounded p-1 border-info" disabled>Liked <?= $topic->getLikes() ? "(" .$topic->getLikes(). ")" : ""  ?> </button>
                 </form>
             </div>
-            <div class="card-footer bg-transparent border-success"><a href="index.php?ctrl=forum&action=detailUser&id=1" class="text-decoration-none">By : Mac Intosh</a></div>
+            <div class="card-footer bg-transparent border-success"><a href="index.php?ctrl=forum&action=detailUser&id=<?=$topic->getUser()->getId()?>" class="text-decoration-none">By : <?= $topic->getUser()->getUserName() ?> </a></div>
         </div>
+
         <?php  
             ($topic->getUser()->getId() == App\Session::getUser()->getId() || App\Session::getUser()->hasRole("ROLE_ADMIN"))
             ? '<a href="#"><img src="public/img/unlock-solid.svg" width="75%" height="75%" alt="penToSquare"></a>

@@ -14,6 +14,7 @@ class LikeManager extends Manager
     }
 
     
+    
     // find a topic 
     public function findOneByTopic($data)
     {

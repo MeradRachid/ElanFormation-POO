@@ -50,7 +50,8 @@
                                         ])) 
                         {
 
-                            return var_dump("registration complete");
+                        // Ajout d'un message de succès
+                        SESSION::addFlash("success", "Bravo, votre compte à bien été créé !");
 
                         }
                     }
@@ -96,6 +97,70 @@
 
         public function login()
         {            
+            if(!empty($_POST))
+            {
+                $userName = filter_input(INPUT_POST, "userName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            }
+        
+            if($userName && $password)
+            {
+                // Connexion à la base de données via le manager 
+                $userManager = new UserManager();
+
+                 // Requête SQL pour récupérer l'utilisateur correspondant au pseudo saisi
+                $user = $userManager->findOneByUsername($userName);                
+                
+                if($user) 
+                {
+                    // On récupère le hash dans la base de données
+                    $hash = $user->getPassword();
+
+                    var_dump($user);
+                    var_dump($hash);
+                    // die();
+
+                    if(password_verify($password, $hash))
+                    {
+
+                        // Le mot de passe est correct, on met en session l'utilisateur connecté
+                        // $_SESSION['user'] = $user;
+    
+                        SESSION::setUser($user);
+            
+                        // Ajout d'un message de connexion avec succès  
+                        SESSION::addFlash("success", "Bravo " .$user->getUserName(). ", vous êtes bien connecté!");
+            
+                        // Redirection vers la page d'accueil
+                        $this->redirectTo("forum","home");
+            
+                        exit();
+
+                    }
+
+                }
+                else 
+                {
+
+                    // Le mot de passe est incorrect, on affiche donc un message d'erreur
+                    SESSION::addFlash("error", "Saisie incorrecte, l'identifiant ou le mot de passe n'est pas reconnu. Vous n'êtes pas connecté.");
+        
+                    $this->redirectTo("security", "loginForm");
+                }  
+
+            }
+            else
+            {
+                // Ajout d'un message d'erreur
+                SESSION::addFlash("error", "Saisie incorrecte, vous n'êtes pas connecté.");
+        
+                $this->redirectTo("security", "loginForm");
+            }
+        }
+        
+
+        public function login0()
+        {            
             // On doit utiliser password_verify avant de mettre en session l'user.
             
             if(!empty($_POST))
@@ -114,12 +179,12 @@
                 $user = $manager->findOneByUsername($userName);
 
                 // Vérification du mot de passe correspondant à l'user choisi.
-                if ($user && password_verify($password, password_hash($password, PASSWORD_DEFAULT))) 
+                if ($user && password_verify($password, $user->getPassword())) 
                 {
                     // Le mot de passe est correct, on met en session l'utilisateur connecté
                     $_SESSION['user'] = $user;
 
-                    // SESSION::setUser($userName);
+                    SESSION::setUser($user);
 
                     return
                     [

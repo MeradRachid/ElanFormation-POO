@@ -7,11 +7,11 @@
 <h1>~ Bienvenue ~</h1>
 <h2 class="text-center"> Topics de la Catégorie</h2>
 
-
-
 <?php
     if (!empty($topics)) 
     {
+        echo '<button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>'; 
+        
         foreach($topics as $topic) 
         {
 ?>
@@ -30,7 +30,8 @@
     }
     else
     {
-        echo "No topics found.";
+        echo '<label class="label-info text-center alert alert-warning" role="alert"> No topics found here. Be the first to create one : </label> <br>
+        <button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>';
     }
 ?>
 

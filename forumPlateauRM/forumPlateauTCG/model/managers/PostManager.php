@@ -17,18 +17,8 @@
             parent::connect();
         }
 
-        public function findByTopic($idtopic)
-        {
-            $sql = "SELECT *
-                    FROM ".$this->tableName." p
-                    WHERE topic_id = :topicid";
-            return $this->getMultipleResults
-            (
-                DAO::select($sql, ['topicid' => $idtopic]), 
-                $this->className
-            );
-        }
-    
+
+
         public function findUserById($id)
         {
             $sql = "SELECT *
@@ -41,5 +31,47 @@
                 $this->className
             );
         }
+
+
+
+        // public function findByTopic($idTopic, $idPost)
+        // {
+        //     $sql = "SELECT *
+        //             FROM ".$this->tableName." p
+        //             WHERE topic_id = :topicid AND post_id = :postid ORDER BY creationDate DESC";
+        //     return $this->getMultipleResults
+        //     (
+        //         DAO::select($sql, ['topicid' => $idTopic, 'postid' => $idPost]), 
+        //         $this->className
+        //     );
+        // }
+    
+
+
+        public function findByTopic($idTopic)
+        {
+            $sql = "SELECT *
+                    FROM ".$this->tableName." p
+                    WHERE topic_id = :topicid
+                    ORDER BY creationDate DESC";
+            return $this->getMultipleResults
+            (
+                DAO::select($sql, ['topicid' => $idTopic]), 
+                $this->className
+            );
+        }
+        
+
+        public function addPost($topicId, $userId, $message)
+        {
+            $data = [
+                "topic_id" => $topicId,
+                "user_id" => $userId,
+                "message" => $message
+            ];
+            $this->add($data);
+        }
+
+        
         
     }

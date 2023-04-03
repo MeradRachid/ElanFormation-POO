@@ -5,7 +5,7 @@
     <form action="index.php?ctrl=security&action=login" method="post" enctype="multipart">
 
         <input type="text" name="userName" placeholder="Pseudo" required>
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="password" placeholder="Password" >
 
         <button type="submit" name="submit" class="p-1"> Connexion </button>
     </form>
