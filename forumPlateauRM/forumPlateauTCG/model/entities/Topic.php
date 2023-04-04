@@ -20,6 +20,7 @@
         private $topicLocked;
         private $likes;
 
+
         public function __construct($data)
         {         
             $this->hydrate($data);        
@@ -45,7 +46,7 @@
                 return $this;
         }
 
-                /**
+        /**
          * Get the value of category
          */ 
         public function getCategory()

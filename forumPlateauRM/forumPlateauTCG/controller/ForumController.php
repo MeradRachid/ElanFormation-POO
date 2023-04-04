@@ -43,6 +43,61 @@
             ];
         }
 
+        public function postForm()
+        {
+            return
+            [
+                "view" => VIEW_DIR."security/postForm.php",
+                $topic_id = $_POST['topic_id'],
+                // var_dump($topic_id) 
+            ];
+        }
+
+        public function addPost()
+        {
+            // if submit is pressed
+            if(!empty($_POST))
+            {
+                $topic_id = filter_input(INPUT_POST, "topic_id", FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+
+                $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                
+                if($message && $topic_id)
+                {
+                    $user_id = SESSION::getUser()->getId();
+
+                    // var_dump($topic_id, $user_id, $message);
+                    // die();
+
+                    $postManager = new PostManager();
+
+                    $postManager->add(["topic_id" => $topic_id, "user_id" => $user_id, "message" => $message]);
+
+                    // // Ajout d'un message de succès
+                    SESSION::addFlash("success", "Bravo, votre post à bien été créé !");
+
+                    $this->redirectTo("forum","detailCategory", $topic_id);
+                }
+                else
+                {
+                    // Ajout d'un message d'erreur
+                    SESSION::addFlash("error", "Une erreur s'est produite, votre post n'a pas été créé !");
+
+                    // Redirection
+                    $this->redirectTo("forum","detailCategory", $topic_id);
+                }
+
+            }
+            else
+            {                
+                // Ajout d'un message d'erreur
+                SESSION::addFlash("error", "Saisie incorrecte, votre post n'a pas été créé !");
+    
+                // Redirection
+                $this->redirectTo("forum","listTopics");
+            }
+        }
+        
         
 
         public function detailTopic($id)
@@ -83,7 +138,7 @@
             [
                 "view" => VIEW_DIR."security/topicForm.php",
                 $category_id = $_POST['category_id'],
-                var_dump($category_id) 
+                // var_dump($category_id) 
             ];
         }
 
@@ -152,6 +207,7 @@
 
         public function detailCategory($id)
         {
+            $categoryManager = new CategoryManager();
             $topicManager = new TopicManager();
 
             return 
@@ -159,7 +215,10 @@
                 "view" => VIEW_DIR."forum/detailCategory.php",
                 "data" => 
                 [
-                    "category" => $id,
+                    "category_id" => $id,
+
+                    "category" => $categoryManager->findOneById($id),
+
                     "topics" => $topicManager->findByCategory($id)
                 ]
             ];

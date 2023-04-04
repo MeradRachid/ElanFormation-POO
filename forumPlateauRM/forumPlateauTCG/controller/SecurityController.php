@@ -128,7 +128,7 @@
                         SESSION::addFlash("success", "Bravo " .$user->getUserName(). ", vous êtes bien connecté!");
             
                         // Redirection vers la page d'accueil
-                        $this->redirectTo("forum","home");
+                        $this->redirectTo("homePage");
             
                         exit();
 

@@ -1,17 +1,21 @@
 <?php 
 
-    $category_id = $result["data"]['category'];
+    $category_id = $result["data"]['category_id'];
+    $category = $result["data"]['category'];
     $topics = $result["data"]['topics'];
-
+    
 ?>
 
 <h1>~ Bienvenue ~</h1>
-<h2 class="text-center"> Topics de la Catégorie</h2>
+<h2 class="text-center"> Topics de la Catégorie <?= $category->getCategoryName() ?> </h2>
 
 <?php
     if (!empty($topics)) 
     {
-        echo '<button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>'; 
+        echo '<form action="index.php?ctrl=forum&action=topicForm" method="post" enctype="multipart/form-data">
+              <input type="hidden" name="category_id" value="'.$category_id.'">
+                  <button type="submit" name="'.$category_id.'" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>
+              </form>'; 
         
         foreach($topics as $topic) 
         {

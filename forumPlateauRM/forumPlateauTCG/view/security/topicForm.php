@@ -1,6 +1,6 @@
 <?php $category_id = $_POST['category_id']; 
 
-var_dump($category_id);
+// var_dump($category_id); 
 
 ?>
 <div class="d-flex justify-content-center">
