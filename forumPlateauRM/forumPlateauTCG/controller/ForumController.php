@@ -76,6 +76,64 @@
 
         }
 
+        public function topicForm()
+        {
+            
+            return
+            [
+                "view" => VIEW_DIR."security/topicForm.php",
+                $category_id = $_POST['category_id'],
+                var_dump($category_id) 
+            ];
+        }
+
+        public function addTopic()
+        {
+            // if submit is pressed
+            if(!empty($_POST))
+            {
+                $category_id = filter_input(INPUT_POST, "category_id", FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+                $topicTitle = filter_input(INPUT_POST, "topicTitle", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                
+                if($topicTitle && $message && $category_id)
+                {
+                    $user_id = SESSION::getUser()->getId();
+
+                    // var_dump($category_id, $user_id, $topicTitle);
+                    // die();
+
+                    $topicManager = new TopicManager();
+
+                    $topicManager->add(["category_id" => $category_id, "user_id" => $user_id, "topicTitle" => $topicTitle]);
+
+
+
+                    // // Ajout d'un message de succès
+                    SESSION::addFlash("success", "Bravo, votre topic à bien été créé !");
+
+                    $this->redirectTo("forum","detailCategory", $category_id);
+                }
+                else
+                {
+                    // Ajout d'un message d'erreur
+                    SESSION::addFlash("error", "Une erreur s'est produite, votre topic n'a pas été créé !");
+
+                    // Redirection
+                    $this->redirectTo("forum","detailCategory", $category_id);
+                }
+
+            }
+            else
+            {                
+                // Ajout d'un message d'erreur
+                SESSION::addFlash("error", "Saisie incorrecte, votre topic n'a pas été créé !");
+    
+                // Redirection
+                $this->redirectTo("forum","listCategories");
+            }
+        }
+
 
 
         public function listCategories()
@@ -101,9 +159,56 @@
                 "view" => VIEW_DIR."forum/detailCategory.php",
                 "data" => 
                 [
+                    "category" => $id,
                     "topics" => $topicManager->findByCategory($id)
                 ]
             ];
+        }
+
+        public function categoryForm()
+        {
+            return
+            [
+                "view" => VIEW_DIR."security/categoryForm.php",
+            ];
+        }
+
+        public function addCategory()
+        {
+            // if submit is pressed
+            if(!empty($_POST))
+            {
+                $categoryName = filter_input(INPUT_POST, "categoryName", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                
+                if($categoryName)
+                {
+                    $categoryManager = new CategoryManager();
+
+                    $categoryManager->add(["categoryName" => $categoryName]);
+
+                    // Ajout d'un message de succès
+                    SESSION::addFlash("success", "Bravo, votre catégorie à bien été créé !");
+
+                    $this->redirectTo("forum","listcategories");
+                }
+                else
+                {
+                    // Ajout d'un message d'erreur
+                    SESSION::addFlash("error", "Une erreur s'est produite, votre catégorie n'a pas été créé !");
+
+                    // Redirection
+                    $this->redirectTo("forum","categoryForm");
+                }
+
+            }
+            else
+            {                
+                // Ajout d'un message d'erreur
+                SESSION::addFlash("error", "Saisie incorrecte, votre catégorie n'a pas été créé !");
+    
+                // Redirection
+                $this->redirectTo("forum","categoryForm");
+            }
         }
 
 
@@ -156,8 +261,6 @@
             
                 // look if there is a dublicate of the user and the topic 
                 $userLike=$likeManager->findOneByPseudo($user, $topic); 
-                
-                // $TopicLike=$likeManager->findOneByTopic($topic); 
 
                 // if the user hasn't liked the topic then 
                 if (!$userLike) 

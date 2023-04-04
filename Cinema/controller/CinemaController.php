@@ -56,7 +56,7 @@
         {
             $pdo = Connect::seConnecter();
         
-            $ql = $pdo->query('
+            $sql = $pdo->query('
                                 SELECT d.director_id, p.firstName, p.lastName 
                                 FROM person p 
                                 JOIN director d ON d.person_id = p.person_id

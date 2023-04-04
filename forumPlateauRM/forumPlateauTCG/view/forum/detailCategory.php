@@ -1,5 +1,6 @@
 <?php 
 
+    $category_id = $result["data"]['category'];
     $topics = $result["data"]['topics'];
 
 ?>
@@ -31,7 +32,11 @@
     else
     {
         echo '<label class="label-info text-center alert alert-warning" role="alert"> No topics found here. Be the first to create one : </label> <br>
-        <button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>';
+                <form action="index.php?ctrl=forum&action=topicForm" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="category_id" value="'.$category_id.'">
+                    <button type="submit" name="'.$category_id.'" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Topic</button>
+                </form>';
+
     }
 ?>
 
