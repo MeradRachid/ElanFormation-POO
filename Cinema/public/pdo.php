@@ -91,8 +91,8 @@
     // $movie = $cinemaStatement->fetchAll();
 
     // On utilise la méthode execute() de l'objet PDOStatement pour exécuter la déclaration préparée et obtenir un objet PDOStatement qui représente les résultats de la requête.
-    // La méthode fetchAll() est appelée sur l'objet $statement après l'exécution de la requête avec la méthode execute().
-
+    // La méthode fetchAll() est appelée sur l'objet $statement après l'exécution de la requête avec la méthode execute(). 
+ 
     // On utilise la méthode fetchAll() de l'objet PDOStatement pour récupérer tous les résultats de la requête sous forme d'un tableau associatif. 
     // Chaque élément du tableau représente une ligne de la table movie, avec les clés du tableau correspondant aux noms des colonnes de la table.    
   

@@ -32,7 +32,7 @@ class LikeManager extends Manager
 
 
 
-    public function countLikes($topicID)
+    public function countLikesByTopic($topicID)
     {
         $sql = "SELECT COUNT(*) FROM `" . $this->tableName . "` l WHERE l.topic_id = ?";
         return $this->getSingleScalarResult(DAO::select($sql, [$topicID], false));

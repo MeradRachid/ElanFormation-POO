@@ -24,8 +24,8 @@
                                 require_once $class_name . '.php';
                                 });
             
-            $hotel1 = new Hotel("Hotel Hilton ✯✯✯✯ Strasbourg", "10, route de la Gare 67000 STRASBOURG", 30);
-            $hotel2 = new Hotel("Hotel Regent ✯✯✯✯ Paris", "61 Rue Dauphine, 75006 PARIS", 25);
+            $hotel1 = new Hotel("Hotel Hilton ✯✯✯✯ Strasbourg", "10, route de la Gare 67000 STRASBOURG");
+            $hotel2 = new Hotel("Hotel Regent ✯✯✯✯ Paris", "61 Rue Dauphine, 75006 PARIS");
             
             $chambre1A= new Chambre('"Accacia - RDC Gauche"', 300, "4 lits", $hotel1);
             $chambre1B= new Chambre('"Laurier - RDC Droite"', 120, "2 lits", $hotel1);

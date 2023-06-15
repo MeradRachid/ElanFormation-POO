@@ -1,19 +1,19 @@
 <?php
 
-namespace Model\Managers;
+    namespace Model\Managers;
+    
 
+    use App\Manager;
 
-use App\Manager;
+    use App\DAO;
 
-use App\DAO;
+    
 
+    class TopicManager extends Manager
+    { // On extends Manager pour pouvoir accéder à ses méthodes publiques 
 
-
-class TopicManager extends Manager
-{ // On extends Manager pour pouvoir accéder à ses méthodes publiques 
-
-    protected $className = "Model\Entities\Topic"; // arborescence des namespaces
-    protected $tableName = "topic"; // C'est la table à laquelle on veut accéder.  
+        protected $className = "Model\Entities\Topic"; // arborescence des namespaces
+        protected $tableName = "topic"; // C'est la table à laquelle on veut accéder.  
 
     /** Pourquoi Protected : 
      * Les propriétés et méthodes définies comme "protected" ne sont accessibles que : 
@@ -29,42 +29,40 @@ class TopicManager extends Manager
      * Et ce, même si des modifications sont apportées à l'implémentation interne de la classe.
      * En résumé, la portée "protected" est utile pour contrôler l'accès aux données et méthodes d'une classe.
      * Et pour faciliter la maintenance du code tout en garantissant la cohérence du comportement de la classe.
-     */
+    */   
 
-    public function __construct()
-    {
-        parent::connect(); // On utilise le parent pour se connecter grâce à DAO
-    }
+        public function __construct()
+        {
+            parent::connect(); // On utilise le parent pour se connecter grâce à DAO
+        }
 
+        public function findByCategory($idCategory)
+        {
+            $sql = "SELECT *
+                    FROM ".$this->tableName." p
+                    WHERE category_id = :id";
 
+            return $this->getMultipleResults
+            (
+                DAO::select($sql, ['id' => $idCategory]), 
+                $this->className
+            );
+        }
 
-    public function findByCategory($idCategory)
-    {
-        $sql = "SELECT *
-                FROM ".$this->tableName." p
-                WHERE category_id = :id";
-    
-        return $this->getMultipleResults(
-            DAO::select($sql, ['id' => $idCategory]), 
-            $this->className
-        );
-    }
-    
-
-
-    public function findPostsById($idPost)
-    {
-        $sql = "SELECT *
-            FROM " . $this->tableName . " a
-            WHERE a.id_" . $this->tableName . " = :id
+        
+        public function findPostsById($idPost)
+        {
+            $sql = "SELECT *
+            FROM ".$this->tableName." a
+            WHERE a.id_".$this->tableName." = :id
             ";
+  
+            return $this->getMultipleResults
+            (
+                DAO::select($sql, ['id' => $idPost], false), 
+                $this->className
+            );
+        }
 
-        return $this->getMultipleResults
-        (
-            DAO::select($sql, ['id' => $idPost], false),
-            $this->className
-        );
     }
-
-}
 ?>

@@ -7,9 +7,7 @@
 <h1 class="text-center">~ Bienvenue ~</h1>
 <h2 class="text-center"> Catégories du Forum</h2>
 
-<form action="index.php?ctrl=forum&action=categoryForm" method="post" enctype="multipart">
-    <button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Category</button>
-</form>
+<button type="submit" class="rounded p-1 border-success" style="max-width: 18rem;">Create a New Category</button>
 
 <div class="d-flex justify-content-center">
 

@@ -4,30 +4,32 @@
 
     $topic = $result['data']['topic'];
 
-    $like = $result["data"]["likes"];
+    $likes = isset($_SESSION['likes'][$topic->getId()]) ? $_SESSION['likes'][$topic->getId()] : null;
 
-    // var_dump($result["data"]["likes"]); 
+    // var_dump($result); 
 ?>
 
 <h1>~ Bienvenue ~</h1>
-<h2 class="text-center"> Messages du Topic <?=$topic->getTopicTitle()?> </h2>
+<h2 class="text-center"> Messages du Topic <?= $topic->getTopicTitle() ?> </h2>
 
-<div class="d-flex justify-content-start align-items-center">
-    <form action="index.php?ctrl=forum&action=like&id=<?=$topic->getId()?>" method="post">
-        <button type="submit" class="rounded p-1 m-3 border-info">Liked <?= $like ? "(" . $like . ")" : "" ?> </button>
-    </form>
+<form action="index.php?ctrl=forum&action=like&id=<?=$topic->getId()?>" method="post">
+    <?php
+
+        if (!is_null($likes)) 
+        {
+            echo '<button type="submit" class="rounded p-1 border-info"> Liked (' . $likes . ')</button>';
+        } 
+        else
+        {
+            echo '<button type="submit" class="rounded p-1 border-info"> Like it ! </button>';
+        }
+
+    ?>
+</form>
 
 <?php
-    if (!empty($posts)) 
+    foreach($posts as $post)
     {
-        echo '<form action="index.php?ctrl=forum&action=postForm" method="post" enctype="multipart/form-data">
-                  <input type="hidden" name="topic_id" value="'.$topic->getId().'">
-                  <button type="submit" name="'.$topic->getId().'" class="rounded p-1 m-3 border-success" style="max-width: 18rem;">Create a New Message</button>
-              </form>
-</div>';
-        
-        foreach($posts as $post) 
-        {
 ?>
         <table class="table table-striped table-hover">
             <thead>
@@ -52,17 +54,13 @@
                 </tr>
             </tbody>
         </table>
-<?php
-        }
-    }
-    else
-    {
-        echo '<label class="label-info text-center alert alert-warning" role="alert"> No post found here. Be the first to create one : </label> <br>
-                <form action="index.php?ctrl=forum&action=postForm" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="topic_id" value="'.$topic->getId().'">
-                    <button type="submit" name="'.$topic->getId().'" class="rounded p-1 m-3 border-success" style="max-width: 18rem;">Create a New Message</button>
-                </form>';
+<?php        
 
     }
 ?>
 
+
+
+<?php
+   
+?>

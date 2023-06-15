@@ -84,6 +84,7 @@
                                         return "Non";
                                 }
                         }
+
                         /**
                          * Get the value of _statutReserve
                          */ 
@@ -104,6 +105,7 @@
                                 
                                 return $this;
                         }
+
                         /**
                          * Set the value of _prix
                          *
@@ -115,6 +117,7 @@
                                 
                                 return $this;
                         }
+
                         /**
                          * Set the value of _hotel
                          *
@@ -160,10 +163,10 @@
                                 return $this;
                         }
                         
-                        public function ajouterChambre(Chambre $chambre) 
-                        {
-                        $this->_chambres []= $chambre;
-                        }
+                        // public function ajouterChambre(Chambre $chambre) 
+                        // {
+                        // $this->_chambres []= $chambre;
+                        // }
                         public function ajouterReservation(Reservation $reservation) 
                         {
                                 $this->_reservations []= $reservation;

@@ -37,6 +37,8 @@
                     }
                 ?>
             </select>
+        </div>
+        
         <button type="submit" name="submit" class="d-flex flex-column align-items-center btn btn-primary m-3">Validate</button>
     </form>
 

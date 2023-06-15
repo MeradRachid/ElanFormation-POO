@@ -171,10 +171,10 @@
                     return $this;
             }
             
-            public function ajouterReservation(Reservation $reservation) 
-            {
-                $this->_reservations []= $reservation;
-            }
+            // public function ajouterReservation(Reservation $reservation) 
+            // {
+            //     $this->_reservations []= $reservation;
+            // }
             public function calculerNbreJours()
             {
                 $interval = 0;
@@ -184,22 +184,22 @@
                 $elapsed = $interval->format("%d");
                 return $elapsed;
             }
-            public function afficherReservation()
-            {
-                echo '<div class=" "> Reservation '.$this->_libelle;
-                if($this->_reservations == null)
-                {
-                    echo ' Aucune Réservation en cours ';
-                }
-                else
-                {             
-                    foreach($this->_reservations as $reservation)
-                    {                
-                        echo ' Reservation '.$reservation->__toString();
-                    }
-                }
-                echo '</div>';
-            }
+            // public function afficherReservation()
+            // {
+            //     echo '<div class=" "> Reservation '.$this->_libelle;
+            //     if($this->_reservations == null)
+            //     {
+            //         echo ' Aucune Réservation en cours ';
+            //     }
+            //     else
+            //     {             
+            //         foreach($this->_reservations as $reservation)
+            //         {                
+            //             echo ' Reservation '.$reservation->__toString();
+            //         }
+            //     }
+            //     echo '</div>';
+            // }
 
             public function __toString() 
             {
